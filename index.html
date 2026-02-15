@@ -6,110 +6,83 @@
 <title>Forest Hills CC — Junior Golf Hub</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--dk:#1a472a;--gr:#2d6a3f;--lg:#4a9e6b;--gold:#d4a843;--dkg:#b8922e;--wh:#fff;--off:#f8f6f0;--cr:#f5f0e6;--ch:#2c2c2c;--lt:#e8e5de;--red:#c0392b;--blu:#2980b9;--ven:#008CFF}
+:root{--dk:#1a472a;--gr:#2d6a3f;--lg:#4a9e6b;--gold:#d4a843;--dkg:#b8922e;--wh:#fff;--off:#f8f6f0;--cr:#f5f0e6;--ch:#2c2c2c;--lt:#e8e5de;--red:#c0392b;--blu:#2980b9;--ven:#008CFF;--org:#e67e22}
 body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--off);min-height:100vh;color:var(--ch)}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+@keyframes slideIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
 header{background:linear-gradient(135deg,var(--dk),var(--gr));color:#fff;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.3)}
-.hdr-inner{max-width:900px;margin:0 auto;padding:10px 14px}
-.hdr-top{display:flex;align-items:center;justify-content:space-between}
-.hdr-brand{display:flex;align-items:center;gap:10px}
-.hdr-sub{font-size:10px;letter-spacing:2px;opacity:.7;text-transform:uppercase}
-.hdr-title{font-size:16px;font-weight:700;color:var(--gold)}
-.hdr-sel{background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.3);border-radius:6px;padding:5px 8px;font-size:12px}
-.hdr-sel option{color:#333}
+.hi{max-width:900px;margin:0 auto;padding:10px 14px}
+.ht{display:flex;align-items:center;justify-content:space-between}
+.hb{display:flex;align-items:center;gap:10px}
 nav{display:flex;gap:3px;margin-top:8px;overflow-x:auto;padding-bottom:2px;-webkit-overflow-scrolling:touch}
-nav button{background:rgba(255,255,255,.1);color:#fff;border:none;border-radius:6px;padding:6px 11px;font-size:12px;font-weight:500;cursor:pointer;white-space:nowrap}
-nav button.active{background:var(--gold);color:var(--dk);font-weight:700}
+nav button{background:rgba(255,255,255,.1);color:#fff;border:none;border-radius:6px;padding:6px 11px;font-size:12px;font-weight:500;cursor:pointer;white-space:nowrap;transition:.15s}
+nav button.a{background:var(--gold);color:var(--dk);font-weight:700}
 main{max-width:800px;margin:0 auto;padding:14px}
 footer{text-align:center;padding:20px 14px;color:#aaa;font-size:11px}
-.card{background:var(--wh);border-radius:12px;padding:16px;box-shadow:0 2px 8px rgba(0,0,0,.06);margin-bottom:12px}
-.card-accent{border-left:4px solid var(--gr)}
+.c{background:var(--wh);border-radius:12px;padding:16px;box-shadow:0 2px 8px rgba(0,0,0,.06);margin-bottom:12px}
+.ca{border-left:4px solid var(--gr)}
 .hero{background:linear-gradient(135deg,var(--dk),var(--gr));border-radius:14px;padding:20px;color:#fff;margin-bottom:16px}
-.hero h2{font-weight:300;font-size:20px}
-.hero p{margin-top:6px;opacity:.8;font-size:13px}
-.stat{border-left:4px solid var(--gr);flex:1 1 140px;min-width:130px;padding:14px 16px}
-.stat-label{font-size:11px;color:#888;text-transform:uppercase;letter-spacing:1px}
-.stat-val{font-size:28px;font-weight:800;margin-top:2px}
-.stat-sub{font-size:11px;color:#999;margin-top:2px}
-.bar-track{background:var(--lt);border-radius:10px;height:8px;overflow:hidden;width:100%}
-.bar-fill{height:100%;border-radius:10px;transition:width .5s}
+.bt{background:var(--lt);border-radius:10px;height:8px;overflow:hidden;width:100%}
+.bf{height:100%;border-radius:10px;transition:width .5s}
 .badge{padding:3px 10px;border-radius:12px;font-size:11px;font-weight:700;display:inline-block}
 .btn{border:none;border-radius:8px;padding:8px 16px;font-size:13px;font-weight:600;cursor:pointer}
-.btn-gr{background:var(--gr);color:#fff}
-.btn-gold{background:var(--gold);color:var(--dk)}
-.btn-ven{background:var(--ven);color:#fff}
-.btn-sm{padding:5px 12px;font-size:12px;border-radius:6px}
-.score-circle{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;cursor:pointer;border:none;font-weight:600}
-.score-minus{border:2px solid var(--lt);background:var(--wh);color:var(--ch)}
-.score-plus{background:var(--gr);color:#fff}
-.putt-circle{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;cursor:pointer;border:none}
-.putt-minus{border:1px solid var(--lt);background:var(--wh);color:var(--ch)}
-.putt-plus{background:var(--blu);color:#fff}
-.toggle{width:44px;height:24px;border-radius:12px;position:relative;cursor:pointer;transition:.2s}
-.toggle-knob{width:20px;height:20px;border-radius:50%;background:#fff;position:absolute;top:2px;transition:.2s;box-shadow:0 1px 3px rgba(0,0,0,.2)}
+.bg{background:var(--gr);color:#fff}.bgo{background:var(--gold);color:var(--dk)}
+.sc{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;cursor:pointer;border:none;font-weight:600}
+.sm{border:2px solid var(--lt);background:var(--wh)}.sp{background:var(--gr);color:#fff}
+.pc{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;cursor:pointer;border:none}
+.pm{border:1px solid var(--lt);background:var(--wh)}.pp{background:var(--blu);color:#fff}
+.tg{width:44px;height:24px;border-radius:12px;position:relative;cursor:pointer;transition:.2s}
+.tk{width:20px;height:20px;border-radius:50%;background:#fff;position:absolute;top:2px;transition:.2s;box-shadow:0 1px 3px rgba(0,0,0,.2)}
 select,input,textarea{font-family:inherit}
-.flex{display:flex}.gap-4{gap:4px}.gap-6{gap:6px}.gap-8{gap:8px}.gap-10{gap:10px}.gap-12{gap:12px}
-.wrap{flex-wrap:wrap}.col{flex-direction:column}.between{justify-content:space-between}.center{align-items:center}
-.hidden{display:none}
-.hole-btn{min-width:40px;padding:7px 12px;font-size:13px;border:none;border-radius:8px;cursor:pointer;box-shadow:0 1px 3px rgba(0,0,0,.08)}
-.hole-btn.active{background:var(--gold);color:var(--dk);font-weight:700}
-.hole-btn:not(.active){background:var(--wh);color:var(--ch);font-weight:500}
-table{width:100%;border-collapse:collapse}
-th,td{padding:6px 4px;text-align:center;font-size:12px}
-.live-dot{width:12px;height:12px;border-radius:50%;background:#4caf50;box-shadow:0 0 8px #4caf50;animation:pulse 2s infinite}
-.live-border{background:linear-gradient(135deg,rgba(212,168,67,.12),rgba(212,168,67,.04));border:2px solid var(--gold);border-radius:12px;padding:16px;margin-bottom:16px}
+.f{display:flex}.g4{gap:4px}.g6{gap:6px}.g8{gap:8px}.g10{gap:10px}.g12{gap:12px}.w{flex-wrap:wrap}.col{flex-direction:column}.sb{justify-content:space-between}.ac{align-items:center}
+.hb2{min-width:40px;padding:7px 12px;font-size:13px;border:none;border-radius:8px;cursor:pointer;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.hb2.a{background:var(--gold);color:var(--dk);font-weight:700}
+.hb2:not(.a){background:var(--wh);color:var(--ch);font-weight:500}
+table{width:100%;border-collapse:collapse}th,td{padding:6px 4px;text-align:center;font-size:12px}
+.ld{width:12px;height:12px;border-radius:50%;background:#4caf50;box-shadow:0 0 8px #4caf50;animation:pulse 2s infinite}
+.lb{background:linear-gradient(135deg,rgba(212,168,67,.12),rgba(212,168,67,.04));border:2px solid var(--gold);border-radius:12px;padding:16px;margin-bottom:16px}
+.wx{border-radius:12px;padding:14px;margin-bottom:12px}
+.ann{animation:slideIn .3s ease}
 </style>
 </head>
 <body>
 <div id="app"></div>
 <script>
-const C={dk:"#1a472a",gr:"#2d6a3f",lg:"#4a9e6b",gold:"#d4a843",dkg:"#b8922e",wh:"#fff",off:"#f8f6f0",cr:"#f5f0e6",ch:"#2c2c2c",lt:"#e8e5de",red:"#c0392b",blu:"#2980b9",ven:"#008CFF"};
-
+const C={dk:"#1a472a",gr:"#2d6a3f",lg:"#4a9e6b",gold:"#d4a843",dkg:"#b8922e",wh:"#fff",off:"#f8f6f0",cr:"#f5f0e6",ch:"#2c2c2c",lt:"#e8e5de",red:"#c0392b",blu:"#2980b9",ven:"#008CFF",org:"#e67e22"};
 const GROUPS=[
 {id:"skills",name:"Skills Challenge",day:"Friday",course:"Practice Facilities",criteria:"Under 70 twice OR under 80 four times",max:null,tees:"N/A",holes:"Stations",tourn:"1-day",rate:25,pars:[]},
-{id:"sv4",name:"Short Valley 4",day:"Friday",course:"Valley #1-#4",criteria:"33 or lower three times",max:33,tees:"Black Junior",holes:4,tourn:"1-day",rate:25,pars:[4,3,5,4]},
-{id:"lv5",name:"Long Valley 5",day:"Friday",course:"Valley #5-#9",criteria:"35 or lower three times",max:35,tees:"Red",holes:5,tourn:"1-day",rate:25,pars:[4,3,4,5,4]},
-{id:"sv9",name:"Short Valley 9",day:"Thursday",course:"Valley Full",criteria:"55 or lower three times",max:55,tees:"Red",holes:9,tourn:"1-day",rate:30,pars:[4,3,5,4,4,3,4,5,4]},
-{id:"lv9",name:"Long Valley 9",day:"Thursday",course:"Valley Full",criteria:"Boys: 55 3x / Girls: 60 3x",maxB:55,maxG:60,tees:"White",holes:9,tourn:"1-day",rate:30,pars:[4,3,5,4,4,3,4,5,4]},
-{id:"jc9",name:"Junior Champ 9",day:"Friday",course:"Champ #2-#9 or #10-#18",criteria:"Boys: 55 3x / Girls: 60 3x (+5 front)",maxB:55,maxG:60,tees:"Junior",holes:8,tourn:"2-day",rate:35,pars:[4,3,4,4,3,5,4,4]},
-{id:"c9",name:"Championship 9",day:"Friday",course:"Champ #1-#9 or #10-#18",criteria:"Boys: 55 3x / Girls: 60 3x",maxB:55,maxG:60,tees:"Boys: White / Girls: Red",holes:9,tourn:"2-day",rate:35,pars:[4,4,3,4,4,3,5,4,4]},
-{id:"c18",name:"Championship 18",day:"Friday",course:"Championship Full",criteria:"Top group",max:null,tees:"Boys: Blue/White / Girls: Red",holes:18,tourn:"2-day",rate:35,pars:[4,4,3,4,4,3,5,4,4,4,3,5,4,4,3,4,5,4]}
+{id:"sv4",name:"Short Valley 4",day:"Friday",course:"Valley #1-#4",criteria:"33 or lower 3x",max:33,tees:"Black Junior",holes:4,tourn:"1-day",rate:25,pars:[4,3,5,4]},
+{id:"lv5",name:"Long Valley 5",day:"Friday",course:"Valley #5-#9",criteria:"35 or lower 3x",max:35,tees:"Red",holes:5,tourn:"1-day",rate:25,pars:[4,3,4,5,4]},
+{id:"sv9",name:"Short Valley 9",day:"Thursday",course:"Valley Full",criteria:"55 or lower 3x",max:55,tees:"Red",holes:9,tourn:"1-day",rate:30,pars:[4,3,5,4,4,3,4,5,4]},
+{id:"lv9",name:"Long Valley 9",day:"Thursday",course:"Valley Full",criteria:"Boys:55 3x / Girls:60 3x",maxB:55,maxG:60,tees:"White",holes:9,tourn:"1-day",rate:30,pars:[4,3,5,4,4,3,4,5,4]},
+{id:"jc9",name:"Junior Champ 9",day:"Friday",course:"Champ #2-#9/#10-#18",criteria:"Boys:55 3x / Girls:60 3x",maxB:55,maxG:60,tees:"Junior",holes:8,tourn:"2-day",rate:35,pars:[4,3,4,4,3,5,4,4]},
+{id:"c9",name:"Championship 9",day:"Friday",course:"Champ #1-#9/#10-#18",criteria:"Boys:55 3x / Girls:60 3x",maxB:55,maxG:60,tees:"Boys:White/Girls:Red",holes:9,tourn:"2-day",rate:35,pars:[4,4,3,4,4,3,5,4,4]},
+{id:"c18",name:"Championship 18",day:"Friday",course:"Championship Full",criteria:"Top group",max:null,tees:"Boys:Blue-White/Girls:Red",holes:18,tourn:"2-day",rate:35,pars:[4,4,3,4,4,3,5,4,4,4,3,5,4,4,3,4,5,4]}
 ];
-
 const SCHEDULE=[
-{date:"Apr 1",ev:"Online Registration Opens",type:"admin"},
-{date:"Apr 28",ev:"Junior Sports Expo / Ice Cream Social",time:"5-7 PM",type:"event"},
-{date:"Apr 30",ev:"Registration Closes (Late penalties begin)",type:"admin"},
-{date:"May 4",ev:"Pro Shop Evaluation",time:"9-11 AM",type:"eval"},
-{date:"May 5",ev:"Parent/Scorer Orientation",time:"5:30-6:30 PM",type:"parent"},
-{date:"May 23",ev:"Parent/Scorer Orientation",time:"5:30-6:30 PM",type:"parent"},
-{date:"May 30",ev:"Valley 9 Groups — Valley Course",type:"play"},
-{date:"May 31",ev:"Skills, 4 & 5 Valley — Championship",type:"play"},
-{date:"Jun 4-6",ev:"Camp: Skills, Short Valley 4 & Long Valley 5",type:"camp"},
-{date:"Jun 11-14",ev:"Camp: Valley 9, Jr Champ & Champ 9",type:"camp"},
-{date:"Jun 14",ev:"Championship 18 Group",type:"play"},
-{date:"Jun 20",ev:"Valley 9 Groups — Valley Course",type:"play"},
-{date:"Jun 21",ev:"Skills, 4 & 5 Valley — Championship",type:"play"},
-{date:"Jun 26",ev:"Junior Member-Guest Tournament",type:"event"},
-{date:"Jul 4-5",ev:"No Junior Golf — Happy 4th!",type:"off"},
-{date:"Jul 11",ev:"Valley 9 Groups — Valley Course",type:"play"},
-{date:"Jul 12",ev:"Skills, 4 & 5 Valley — Championship",type:"play"},
-{date:"Jul 13-14",ev:"Parent-Child Tournament",type:"event"},
-{date:"Jul 18-19",ev:"Season-Ending Tournament",type:"tournament"},
-{date:"Jul 19",ev:"Awards Banquet — 5:45 PM",type:"event"}
+{date:"Apr 1",ev:"Online Registration Opens",type:"admin"},{date:"Apr 28",ev:"Junior Sports Expo / Ice Cream Social",time:"5-7 PM",type:"event"},
+{date:"Apr 30",ev:"Registration Closes",type:"admin"},{date:"May 4",ev:"Pro Shop Evaluation",time:"9-11 AM",type:"eval"},
+{date:"May 5",ev:"Parent/Scorer Orientation",time:"5:30-6:30 PM",type:"parent"},{date:"May 23",ev:"Parent/Scorer Orientation",time:"5:30-6:30 PM",type:"parent"},
+{date:"May 30",ev:"Valley 9 Groups",type:"play"},{date:"May 31",ev:"Skills, 4 & 5 Valley",type:"play"},
+{date:"Jun 4-6",ev:"Camp: Skills, SV4 & LV5",type:"camp"},{date:"Jun 11-14",ev:"Camp: V9, JC & C9",type:"camp"},
+{date:"Jun 14",ev:"Championship 18",type:"play"},{date:"Jun 20",ev:"Valley 9 Groups",type:"play"},
+{date:"Jun 21",ev:"Skills, 4 & 5 Valley",type:"play"},{date:"Jun 26",ev:"Junior Member-Guest",type:"event"},
+{date:"Jul 4-5",ev:"No Golf — Happy 4th!",type:"off"},{date:"Jul 11",ev:"Valley 9 Groups",type:"play"},
+{date:"Jul 12",ev:"Skills, 4 & 5 Valley",type:"play"},{date:"Jul 13-14",ev:"Parent-Child Tournament",type:"event"},
+{date:"Jul 18-19",ev:"Season-Ending Tournament",type:"tournament"},{date:"Jul 19",ev:"Awards Banquet 5:45 PM",type:"event"}
 ];
-
 const JUNIORS=[
-{id:1,name:"Ethan M.",age:10,g:"M",group:"sv9",scores:[60,57,55,53,55],priv:[],live:null},
-{id:2,name:"Sophia R.",age:12,g:"F",group:"lv9",scores:[62,58,60,57],priv:[],live:{holes:[5,4,6,5,0,0,0,0,0],through:4}},
-{id:3,name:"Liam T.",age:8,g:"M",group:"skills",scores:[82,75,71,68],priv:[],live:null},
-{id:4,name:"Ava K.",age:14,g:"F",group:"c9",scores:[63,58,61,59,57],priv:[52,55,58],live:null},
-{id:5,name:"Noah B.",age:11,g:"M",group:"sv9",scores:[60,57,55,58],priv:[],live:{holes:[4,3,6,4,5,0,0,0,0],through:5}},
-{id:6,name:"Olivia W.",age:13,g:"F",group:"jc9",scores:[65,62,59,58],priv:[],live:null},
-{id:7,name:"Mason C.",age:15,g:"M",group:"c18",scores:[82,78,80,76],priv:[48,50,49,47,51],live:null},
-{id:8,name:"Emma D.",age:9,g:"F",group:"lv5",scores:[40,37,36,35],priv:[],live:null}
+{id:1,name:"Ethan M.",age:10,g:"M",group:"sv9",scores:[60,57,55,53,55],priv:[],live:null,
+ history:[{wk:1,total:60,holes:[8,5,9,7,6,5,7,8,5],putts:[3,2,3,2,2,2,3,3,2]},{wk:2,total:57,holes:[7,4,8,6,7,4,6,8,7],putts:[2,2,3,2,3,1,2,3,2]},{wk:3,total:55,holes:[6,4,7,6,7,4,6,8,7],putts:[2,2,2,2,2,1,2,3,2]},{wk:4,total:53,holes:[6,3,7,6,6,4,6,8,7],putts:[2,1,2,2,2,2,2,3,2]},{wk:5,total:55,holes:[7,4,7,6,6,4,6,8,7],putts:[3,2,2,2,2,1,2,3,2]}]},
+{id:2,name:"Sophia R.",age:12,g:"F",group:"lv9",scores:[62,58,60,57],priv:[],live:{holes:[5,4,6,5,0,0,0,0,0],through:4},
+ history:[{wk:1,total:62,holes:[8,5,8,7,7,5,7,8,7],putts:[3,2,3,2,2,2,2,3,2]},{wk:2,total:58,holes:[7,4,7,6,7,4,7,8,8],putts:[2,2,2,2,3,1,2,3,3]},{wk:3,total:60,holes:[7,5,8,6,7,4,7,8,8],putts:[2,2,3,2,2,1,2,3,3]},{wk:4,total:57,holes:[6,4,7,6,7,4,7,8,8],putts:[2,1,2,2,2,1,2,3,3]}]},
+{id:3,name:"Liam T.",age:8,g:"M",group:"skills",scores:[82,75,71,68],priv:[],live:null,history:[]},
+{id:4,name:"Ava K.",age:14,g:"F",group:"c9",scores:[63,58,61,59,57],priv:[52,55,58],live:null,history:[]},
+{id:5,name:"Noah B.",age:11,g:"M",group:"sv9",scores:[60,57,55,58],priv:[],live:{holes:[4,3,6,4,5,0,0,0,0],through:5},history:[]},
+{id:6,name:"Olivia W.",age:13,g:"F",group:"jc9",scores:[65,62,59,58],priv:[],live:null,history:[]},
+{id:7,name:"Mason C.",age:15,g:"M",group:"c18",scores:[82,78,80,76],priv:[48,50,49,47,51],live:null,history:[]},
+{id:8,name:"Emma D.",age:9,g:"F",group:"lv5",scores:[40,37,36,35],priv:[],live:null,history:[]}
 ];
-
 const SCORERS=[
 {id:1,par:"Jennifer M.",jr:"Ethan M.",done:2,req:3,tDone:false,ns:0},
 {id:2,par:"David R.",jr:"Sophia R.",done:3,req:3,tDone:true,ns:0},
@@ -117,684 +90,561 @@ const SCORERS=[
 {id:4,par:"Mike K.",jr:"Ava K.",done:2,req:3,tDone:false,ns:0},
 {id:5,par:"Lisa B.",jr:"Noah B.",done:3,req:3,tDone:false,ns:0}
 ];
-
 const SCORER_REQS=[
-{id:1,parent:"Jennifer M.",date:"Jun 27",group:"Short Valley 9",rate:30,status:"open"},
-{id:2,parent:"Mike K.",date:"Jul 12",group:"Championship 9",rate:35,status:"filled",scorer:"Pat G."}
+{id:1,parent:"Jennifer M.",date:"Jun 27",group:"Short Valley 9",rate:30,status:"open",urgent:false},
+{id:2,parent:"Mike K.",date:"Jul 12",group:"Championship 9",rate:35,status:"filled",scorer:"Pat G.",urgent:false},
+{id:3,parent:"Sarah T.",date:"Jun 28",group:"Skills",rate:25,status:"urgent",urgent:true,note:"TOMORROW — need scorer ASAP"}
 ];
-
 const SWAPS=[
-{id:1,from:"Sarah T.",fromDate:"Jun 27 (Thu)",seeking:"Jul 11 (Thu)",group:"Skills",status:"open"},
-{id:2,from:"Lisa B.",fromDate:"Jul 12 (Fri)",seeking:"Jun 28 (Fri)",group:"Short Valley 9",status:"open"}
+{id:1,from:"Sarah T.",fromDate:"Jun 27 (Thu)",seeking:"Jul 11 (Thu)",group:"Skills"},
+{id:2,from:"Lisa B.",fromDate:"Jul 12 (Fri)",seeking:"Jun 28 (Fri)",group:"Short Valley 9"}
 ];
-
+const ANNOUNCEMENTS=[
+{id:1,title:"⚡ Tomorrow's Tee Times Moved Up 30 Min",body:"Due to afternoon heat advisory, all Friday tee times have been moved up 30 minutes. Check ForeTees for updated times.",time:"2 hours ago",pinned:true,type:"urgent"},
+{id:2,title:"Scorer Needed URGENTLY — Jun 28 (Fri)",body:"Sarah T. needs a replacement scorer for Skills Challenge this Friday. $25 paid. Contact Golf Shop or tap 'Request Scorer' if you can help.",time:"5 hours ago",pinned:true,type:"scorer"},
+{id:3,title:"Course Condition Update",body:"Valley Course is cart path only today due to overnight rain. Scorers please walk with your group.",time:"1 day ago",pinned:false,type:"info"},
+{id:4,title:"Parent-Child Tournament Registration Open",body:"Sign up at the Golf Shop for the July 13-14 Parent-Child Tournament. Spots are limited!",time:"3 days ago",pinned:false,type:"event"},
+{id:5,title:"Congratulations Ethan M.!",body:"Ethan shot a 53 last Thursday — his personal best and a qualifying round! Keep it up!",time:"5 days ago",pinned:false,type:"achievement"}
+];
+const WEATHER={
+  thu:{day:"Thursday",temp:88,high:91,low:72,condition:"Partly Cloudy",icon:"⛅",wind:"8 mph SW",humidity:"55%",precip:"10%",playable:true,alert:null},
+  fri:{day:"Friday",temp:94,high:96,low:74,condition:"Heat Advisory",icon:"🌡️",wind:"5 mph S",humidity:"65%",precip:"5%",playable:true,alert:"Heat Advisory: Ensure kids have water and sunscreen. Tee times moved up 30 min."}
+};
 const FINES={s:[75,125,200],e:[100,150,200]};
+function gT(g,gen){if(!g)return null;if(g.max)return g.max;return gen==="F"?(g.maxG||null):(g.maxB||null)}
+function cA(j){const g=GROUPS.find(x=>x.id===j.group);if(!g)return{r:false,q:0,n:3,d:""};if(g.id==="skills"){const u7=j.scores.filter(s=>s<70).length,u8=j.scores.filter(s=>s<80).length;return{r:u7>=2||u8>=4,q:Math.max(u7,Math.floor(u8/2)),n:2,d:`${u7} under 70, ${u8} under 80`}}const t=gT(g,j.g);if(!t)return{r:false,q:0,n:3,d:"Top group"};const q=j.scores.filter(s=>s<=t).length;return{r:q>=3,q,n:3,d:`${q}/3 at ${t} or lower`}}
+function cP(j){const t=j.g==="F"?57:50;const q=(j.priv||[]).filter(s=>s<=t).length;return{e:q>=5,q,n:5,t}}
 
-function getThreshold(g,gender){if(!g)return null;if(g.max)return g.max;return gender==="F"?(g.maxG||null):(g.maxB||null)}
-function checkAdv(j){const g=GROUPS.find(x=>x.id===j.group);if(!g)return{ready:false,q:0,need:3,detail:""};if(g.id==="skills"){const u70=j.scores.filter(s=>s<70).length,u80=j.scores.filter(s=>s<80).length;return{ready:u70>=2||u80>=4,q:Math.max(u70,Math.floor(u80/2)),need:2,detail:`${u70} under 70, ${u80} under 80`}}const t=getThreshold(g,j.g);if(!t)return{ready:false,q:0,need:3,detail:"Top group"};const q=j.scores.filter(s=>s<=t).length;return{ready:q>=3,q,need:3,detail:`${q}/3 at ${t} or lower`}}
-function checkPriv(j){const t=j.g==="F"?57:50;const q=(j.priv||[]).filter(s=>s<=t).length;return{earned:q>=5,q,need:5,t}}
+let S={role:"parent",page:"Dashboard",aH:0,holes:[],notes:{},ci:false,srS:"list",srD:"",srG:"",srSent:false,sf:"all",sg:null,kp:{},sk:0,annFilter:"all",newAnn:"",lbGroup:"sv9",hJunior:null,hWeek:null};
+function iH(){S.holes=Array.from({length:9},(_,i)=>({num:i+1,par:[4,3,5,4,4,3,4,5,4][i],scores:{"Ethan M.":0,"Noah B.":0,"Sophia R.":0},putts:{"Ethan M.":0,"Noah B.":0,"Sophia R.":0}}))}
+iH();
 
-// State
-let state={role:"parent",page:"Dashboard",activeHole:0,holes:[],notes:{},checkedIn:false,scorerReqStep:"list",scorerReqDate:"",scorerReqGroup:"",scorerReqSent:false,schedFilter:"all",selGroup:null};
+function h(t,p,...c){const e=document.createElement(t);if(p)Object.entries(p).forEach(([k,v])=>{if(k==="style"&&typeof v==="object")Object.assign(e.style,v);else if(k.startsWith("on"))e.addEventListener(k.slice(2).toLowerCase(),v);else if(k==="className")e.className=v;else if(k==="innerHTML")e.innerHTML=v;else if(k==="value")e.value=v;else if(k==="selected"&&v)e.selected=true;else if(k==="type")e.type=v;else if(k==="accept")e.accept=v;else if(k==="placeholder")e.placeholder=v;else if(k==="href")e.href=v;else if(k==="target")e.target=v;else if(k==="rel")e.rel=v;else if(k==="src")e.src=v;else e.setAttribute(k,v)});c.flat(Infinity).forEach(x=>{if(x!=null&&x!==false)e.appendChild(typeof x==="string"?document.createTextNode(x):x)});return e}
+function bar(c,t,col=C.gr){return h("div",{className:"bt"},h("div",{className:"bf",style:{background:col,width:`${Math.min(c/t*100,100)}%`}}))}
+function dia(s=20,col="#ccc"){const v=document.createElementNS("http://www.w3.org/2000/svg","svg");v.setAttribute("width",s);v.setAttribute("height",s*1.4);v.setAttribute("viewBox","0 0 32 45");v.innerHTML=`<polygon points="16,2 30,22 16,43 2,22" fill="none" stroke="${col}" stroke-width="2"/><line x1="16" y1="2" x2="16" y2="43" stroke="${col}" stroke-width="1" opacity=".5"/><line x1="2" y1="22" x2="30" y2="22" stroke="${col}" stroke-width="1" opacity=".5"/>`;return v}
+function stat(l,v,s,col=C.gr){return h("div",{className:"c",style:{borderLeft:"4px solid "+col,flex:"1 1 130px",minWidth:"120px",padding:"14px 16px"}},h("div",{style:{fontSize:"11px",color:"#888",textTransform:"uppercase",letterSpacing:"1px"}},l),h("div",{style:{fontSize:"26px",fontWeight:800,color:col,marginTop:"2px"}},String(v)),s?h("div",{style:{fontSize:"11px",color:"#999",marginTop:"2px"}},s):null)}
 
-function initHoles(){
-  state.holes=Array.from({length:9},(_,i)=>({num:i+1,par:[4,3,5,4,4,3,4,5,4][i],scores:{"Ethan M.":0,"Noah B.":0,"Sophia R.":0},putts:{"Ethan M.":0,"Noah B.":0,"Sophia R.":0}}));
-}
-initHoles();
-
-function h(tag,props,...children){
-  const el=document.createElement(tag);
-  if(props)Object.entries(props).forEach(([k,v])=>{
-    if(k==="style"&&typeof v==="object")Object.assign(el.style,v);
-    else if(k.startsWith("on"))el.addEventListener(k.slice(2).toLowerCase(),v);
-    else if(k==="className")el.className=v;
-    else if(k==="innerHTML")el.innerHTML=v;
-    else el.setAttribute(k,v);
-  });
-  children.flat(Infinity).forEach(c=>{if(c!=null&&c!==false)el.appendChild(typeof c==="string"?document.createTextNode(c):c)});
-  return el;
-}
-
-function bar(cur,tot,color=C.gr){
-  return h("div",{className:"bar-track"},h("div",{className:"bar-fill",style:{background:color,width:`${Math.min(cur/tot*100,100)}%`}}));
-}
-
-function diamond(size=20,color="#ccc"){
-  const s=document.createElementNS("http://www.w3.org/2000/svg","svg");
-  s.setAttribute("width",size);s.setAttribute("height",size*1.4);s.setAttribute("viewBox","0 0 32 45");
-  s.innerHTML=`<polygon points="16,2 30,22 16,43 2,22" fill="none" stroke="${color}" stroke-width="2"/><line x1="16" y1="2" x2="16" y2="43" stroke="${color}" stroke-width="1" opacity=".5"/><line x1="2" y1="22" x2="30" y2="22" stroke="${color}" stroke-width="1" opacity=".5"/>`;
-  return s;
-}
-
-function stat(label,val,sub,color=C.gr){
-  return h("div",{className:"card stat",style:{borderLeftColor:color}},
-    h("div",{className:"stat-label"},label),
-    h("div",{className:"stat-val",style:{color}},String(val)),
-    sub?h("div",{className:"stat-sub"},sub):null
-  );
-}
-
-// Pages
-const PAGES={
-  parent:["Dashboard","Live Tracker","Scores","Request Scorer","Schedule","Groups","Info"],
+const PG={
+  parent:["Dashboard","My Kids","Live Tracker","Scores","History","Request Scorer","Schedule","Groups","Info"],
   scorer:["Dashboard","Live Scoring","Check In","Schedule","Rules Card"],
-  admin:["Dashboard","Juniors","Scorers","Requests","Finances","Schedule","Groups","Settings"]
+  admin:["Dashboard","Juniors","Scorers","Requests","Announcements","Finances","Schedule","Groups","Settings"]
 };
 
-function render(){
-  const app=document.getElementById("app");
-  app.innerHTML="";
-  app.appendChild(renderHeader());
-  const main=h("main",{});
-  main.appendChild(renderPage());
-  app.appendChild(main);
-  app.appendChild(renderFooter());
+function R(){const a=document.getElementById("app");a.innerHTML="";a.appendChild(rH());const m=h("main",{});m.appendChild(rP());a.appendChild(m);a.appendChild(h("footer",{},dia(14,"#ccc"),h("div",{style:{marginTop:"4px"}},"Forest Hills Country Club • Junior Golf"),h("div",{},"Golf Shop: (636) 227-1528")))}
+function rH(){return h("header",{},h("div",{className:"hi"},h("div",{className:"ht"},h("div",{className:"hb"},dia(20,"#fff"),h("div",{},h("div",{style:{fontSize:"10px",letterSpacing:"2px",opacity:.7,textTransform:"uppercase"}},"Forest Hills CC"),h("div",{style:{fontSize:"16px",fontWeight:700,color:C.gold}},"Junior Golf"))),h("select",{style:{background:"rgba(255,255,255,.15)",color:"#fff",border:"1px solid rgba(255,255,255,.3)",borderRadius:"6px",padding:"5px 8px",fontSize:"12px"},onChange:e=>{S.role=e.target.value;S.page="Dashboard";R()}},...["parent","scorer","admin"].map(r=>h("option",{value:r,selected:S.role===r,style:{color:"#333"}},r[0].toUpperCase()+r.slice(1))))),h("nav",{},...PG[S.role].map(p=>h("button",{className:S.page===p?"a":"",onClick:()=>{S.page=p;R()}},p)))))}
+function rP(){const r=S.role,p=S.page;if(r==="parent"){if(p==="Dashboard")return pDash();if(p==="My Kids")return myKids();if(p==="Live Tracker")return liveT();if(p==="Scores")return scoresV();if(p==="History")return historyV();if(p==="Request Scorer")return reqScorer();if(p==="Schedule")return schedV();if(p==="Groups")return groupsV();if(p==="Info")return infoV()}else if(r==="scorer"){if(p==="Dashboard")return sDash();if(p==="Live Scoring")return liveS();if(p==="Check In")return checkIn();if(p==="Schedule")return schedV();if(p==="Rules Card")return rulesC()}else{if(p==="Dashboard")return aDash();if(p==="Juniors")return aJuniors();if(p==="Scorers")return aScorers();if(p==="Requests")return aReqs();if(p==="Announcements")return aAnn();if(p==="Finances")return aFin();if(p==="Schedule")return schedV();if(p==="Groups")return groupsV();if(p==="Settings")return aSet()}return pDash()}
+
+// ===== WEATHER WIDGET =====
+function weatherW(){
+  const w=h("div",{});
+  [WEATHER.thu,WEATHER.fri].forEach(d=>{
+    const isAlert=!!d.alert;
+    const wx=h("div",{className:"wx",style:{background:isAlert?"#fff3e0":"#e8f5e9",border:isAlert?"1px solid #ffcc80":"1px solid #a5d6a7",display:"flex",gap:"12px",alignItems:"center",marginBottom:"8px"}});
+    wx.appendChild(h("div",{style:{fontSize:"32px",flexShrink:0}},d.icon));
+    const info=h("div",{style:{flex:1}});
+    info.appendChild(h("div",{className:"f sb ac"},h("div",{style:{fontWeight:700,fontSize:"14px"}},d.day),h("div",{style:{fontSize:"20px",fontWeight:800,color:isAlert?C.org:C.gr}},d.temp+"°F")));
+    info.appendChild(h("div",{style:{fontSize:"12px",color:"#666"}},d.condition+" • Hi "+d.high+"° Lo "+d.low+"° • Wind "+d.wind+" • "+d.precip+" rain"));
+    if(d.alert)info.appendChild(h("div",{style:{fontSize:"12px",color:C.org,fontWeight:600,marginTop:"4px"}},"⚠️ "+d.alert));
+    wx.appendChild(info);
+    w.appendChild(wx);
+  });
+  return w;
 }
 
-function renderHeader(){
-  const hdr=h("header",{},
-    h("div",{className:"hdr-inner"},
-      h("div",{className:"hdr-top"},
-        h("div",{className:"hdr-brand"},
-          diamond(20,"#fff"),
-          h("div",{},h("div",{className:"hdr-sub"},"Forest Hills CC"),h("div",{className:"hdr-title"},"Junior Golf"))
-        ),
-        h("select",{className:"hdr-sel",onChange:e=>{state.role=e.target.value;state.page="Dashboard";render()}},
-          ...["parent","scorer","admin"].map(r=>h("option",{value:r,selected:state.role===r?true:undefined},r.charAt(0).toUpperCase()+r.slice(1)))
-        )
-      ),
-      h("nav",{},...PAGES[state.role].map(p=>
-        h("button",{className:state.page===p?"active":"",onClick:()=>{state.page=p;render()}},p)
-      ))
-    )
-  );
-  return hdr;
-}
-
-function renderFooter(){
-  return h("footer",{},diamond(14,"#ccc"),h("div",{style:{marginTop:"4px"}},"Forest Hills Country Club • Junior Golf Program"),h("div",{},"Golf Shop: (636) 227-1528"));
-}
-
-function renderPage(){
-  const r=state.role,p=state.page;
-  if(r==="parent"){
-    if(p==="Dashboard")return parentDash();
-    if(p==="Live Tracker")return liveTracker();
-    if(p==="Scores")return scoresView();
-    if(p==="Request Scorer")return requestScorer();
-    if(p==="Schedule")return scheduleView();
-    if(p==="Groups")return groupsView();
-    if(p==="Info")return infoView();
-  }else if(r==="scorer"){
-    if(p==="Dashboard")return scorerDash();
-    if(p==="Live Scoring")return liveScoring();
-    if(p==="Check In")return checkInView();
-    if(p==="Schedule")return scheduleView();
-    if(p==="Rules Card")return rulesCard();
-  }else{
-    if(p==="Dashboard")return adminDash();
-    if(p==="Juniors")return adminJuniors();
-    if(p==="Scorers")return adminScorers();
-    if(p==="Requests")return adminRequests();
-    if(p==="Finances")return adminFinances();
-    if(p==="Schedule")return scheduleView();
-    if(p==="Groups")return groupsView();
-    if(p==="Settings")return adminSettings();
+// ===== ANNOUNCEMENTS WIDGET =====
+function annWidget(limit){
+  const w=h("div",{});
+  const pinned=ANNOUNCEMENTS.filter(a=>a.pinned);
+  const rest=ANNOUNCEMENTS.filter(a=>!a.pinned);
+  const show=limit?[...pinned,...rest].slice(0,limit):ANNOUNCEMENTS;
+  show.forEach(a=>{
+    const tc={urgent:C.red,scorer:C.org,info:C.blu,event:C.gold,achievement:C.gr};
+    const ic={urgent:"🚨",scorer:"📢",info:"ℹ️",event:"🎉",achievement:"🏆"};
+    const card=h("div",{className:"c ann",style:{borderLeft:"4px solid "+(tc[a.type]||C.gr),padding:"12px 14px"}});
+    card.appendChild(h("div",{className:"f sb ac"},h("div",{className:"f ac g6"},a.pinned?h("span",{style:{fontSize:"10px"}},"📌"):null,h("span",{style:{fontWeight:700,fontSize:"14px",color:C.ch}},ic[a.type]+" "+a.title)),h("span",{style:{fontSize:"10px",color:"#aaa"}},a.time)));
+    card.appendChild(h("div",{style:{fontSize:"13px",color:"#555",marginTop:"6px",lineHeight:"1.4"}},a.body));
+    w.appendChild(card);
+  });
+  if(limit&&ANNOUNCEMENTS.length>limit){
+    w.appendChild(h("button",{style:{background:"none",border:"none",color:C.gr,fontSize:"13px",cursor:"pointer",padding:"8px 0",fontWeight:600},onClick:()=>{S.page="My Kids";R()}},"View all announcements →"));
   }
-  return parentDash();
+  return w;
 }
 
-function juniorCard(j){
-  const adv=checkAdv(j),g=GROUPS.find(x=>x.id===j.group),t=getThreshold(g,j.g),priv=checkPriv(j);
-  const scores=j.scores||[],best=scores.length?Math.min(...scores):null,avg=scores.length?(scores.reduce((a,b)=>a+b,0)/scores.length).toFixed(1):null;
-  const trend=scores.length>=2?scores[scores.length-1]-scores[scores.length-2]:0;
-  const card=h("div",{className:"card"});
-  const top=h("div",{className:"flex between center",style:{marginBottom:"10px"}},
-    h("div",{},h("div",{style:{fontSize:"17px",fontWeight:700}},j.name),h("div",{style:{fontSize:"12px",color:"#888"}},"Age "+j.age+" • "+(g?g.name:"")+" • "+(g?g.day:"")+"s")),
-    adv.ready?h("span",{className:"badge",style:{background:C.gold,color:C.dk}},"Ready to Advance!"):null
+// ===== FORETEES LINK =====
+function foreteesLink(){
+  return h("a",{href:"https://foresthillscc.com",target:"_blank",rel:"noopener noreferrer",style:{display:"flex",alignItems:"center",gap:"10px",background:C.wh,borderRadius:"10px",padding:"12px 16px",boxShadow:"0 2px 6px rgba(0,0,0,.06)",textDecoration:"none",marginBottom:"12px",border:"1px solid "+C.lt}},
+    h("div",{style:{fontSize:"24px"}},"⛳"),
+    h("div",{style:{flex:1}},h("div",{style:{fontSize:"14px",fontWeight:700,color:C.dk}},"View Tee Times on ForeTees"),h("div",{style:{fontSize:"12px",color:"#888"}},"Check your scheduled tee time for this week")),
+    h("div",{style:{fontSize:"18px",color:"#ccc"}},"→")
   );
-  card.appendChild(top);
-  if(t){
-    const stats=h("div",{className:"flex gap-8 wrap",style:{marginBottom:"12px"}});
-    [{l:"Target",v:t,c:C.dk},{l:"Best",v:best||"–",c:best&&best<=t?C.gr:C.ch},{l:"Average",v:avg||"–",c:C.ch},{l:"Trend",v:trend<0?"↓"+Math.abs(trend):trend>0?"↑"+trend:"—",c:trend<0?C.gr:trend>0?C.red:C.ch}].forEach(s=>{
-      stats.appendChild(h("div",{style:{background:C.cr,borderRadius:"8px",padding:"6px 12px",flex:"1 1 70px",textAlign:"center"}},
-        h("div",{style:{fontSize:"10px",color:"#888"}},s.l),h("div",{style:{fontSize:"20px",fontWeight:800,color:s.c}},String(s.v))));
+}
+
+// ===== PARENT DASH =====
+function pDash(){
+  const w=h("div",{});
+  const mine=JUNIORS.slice(0,2),lk=mine.filter(j=>j.live);
+  w.appendChild(h("div",{className:"hero"},h("h2",{style:{fontWeight:300,fontSize:"20px"}},"Welcome back!"),h("p",{style:{marginTop:"6px",opacity:.8,fontSize:"13px"}},lk.length>0?lk.map(k=>k.name).join(" & ")+" on the course now":"Next play day is Thursday")));
+  
+  // Weather
+  w.appendChild(h("div",{style:{marginBottom:"4px"}},h("h3",{style:{fontSize:"15px",color:C.dk,marginBottom:"8px"}},"Play Day Weather")));
+  w.appendChild(weatherW());
+  
+  // ForeTees
+  w.appendChild(foreteesLink());
+  
+  // Urgent announcements
+  const urgent=ANNOUNCEMENTS.filter(a=>a.pinned);
+  if(urgent.length){
+    w.appendChild(h("div",{style:{marginBottom:"4px"}},h("h3",{style:{fontSize:"15px",color:C.dk,marginBottom:"8px"}},"Announcements")));
+    w.appendChild(annWidget(3));
+  }
+  
+  // Live
+  if(lk.length){
+    const lb=h("div",{className:"lb"},h("div",{className:"f ac g8",style:{marginBottom:"8px"}},h("div",{className:"ld"}),h("span",{style:{fontWeight:700,color:C.dk,fontSize:"14px"}},"LIVE ON COURSE")));
+    lk.forEach(j=>lb.appendChild(liveMini(j)));
+    w.appendChild(lb);
+  }
+  
+  // Scorer obligations
+  const urgentReqs=SCORER_REQS.filter(r=>r.urgent);
+  if(urgentReqs.length){
+    const urgCard=h("div",{className:"c",style:{borderLeft:"4px solid "+C.red,background:"#fef2f2"}});
+    urgCard.appendChild(h("div",{className:"f ac g8",style:{marginBottom:"6px"}},h("span",{style:{fontSize:"14px"}},"🚨"),h("span",{style:{fontWeight:700,color:C.red,fontSize:"14px"}},"Scorer Needed ASAP")));
+    urgentReqs.forEach(r=>{
+      urgCard.appendChild(h("div",{style:{fontSize:"13px",color:C.ch,marginBottom:"4px"}},r.parent+" — "+r.date+" — "+r.group+" ($"+r.rate+")"));
+      urgCard.appendChild(h("div",{style:{fontSize:"12px",color:C.red,fontWeight:600}},r.note));
     });
-    card.appendChild(stats);
+    urgCard.appendChild(h("button",{className:"btn bg",style:{marginTop:"8px"},onClick:()=>{S.page="Request Scorer";R()}},"I Can Help →"));
+    w.appendChild(urgCard);
   }
-  card.appendChild(h("div",{style:{marginBottom:"10px"}},
-    h("div",{className:"flex between",style:{fontSize:"12px",marginBottom:"4px"}},h("span",{style:{color:"#666"}},"Advancement"),h("span",{style:{fontWeight:600,color:adv.ready?C.gold:C.gr}},adv.detail)),
-    bar(adv.q,adv.need,adv.ready?C.gold:C.gr)
-  ));
-  const sc=h("div",{className:"flex gap-6 wrap"});
-  scores.forEach(s=>{const q=t&&s<=t;sc.appendChild(h("span",{style:{background:q?C.gr+"12":C.cr,border:q?"2px solid "+C.gr:"1px solid "+C.lt,padding:"3px 10px",borderRadius:"6px",fontSize:"13px",fontWeight:700,color:q?C.gr:C.ch}},String(s)))});
-  card.appendChild(sc);
-  if(["jc9","c9","c18"].includes(j.group)){
-    card.appendChild(h("div",{style:{marginTop:"12px",padding:"10px",background:C.cr,borderRadius:"8px"}},
-      h("div",{style:{fontSize:"12px",fontWeight:600,marginBottom:"4px"}},"Privilege Card: "+(priv.earned?"Earned":priv.q+"/5 qualifying (≤"+priv.t+")")),
-      bar(priv.q,5,priv.earned?C.gold:C.blu)
-    ));
-  }
-  return card;
-}
-
-function liveMiniCard(j){
-  const g=GROUPS.find(x=>x.id===j.group),t=getThreshold(g,j.g)||55,r=j.live,pars=g?g.pars:[],thru=r.through;
-  const scored=r.holes.slice(0,thru),curTot=scored.reduce((a,b)=>a+b,0),parThru=pars.slice(0,thru).reduce((a,b)=>a+b,0);
-  const totalH=typeof g?.holes==="number"?g.holes:9,rem=totalH-thru,budget=t-curTot;
-  const avgN=rem>0?(budget/rem).toFixed(1):0,onPace=rem>0?curTot<=(t*(thru/totalH)):curTot<=t;
-  const proj=rem>0?Math.round(curTot+(curTot/thru)*rem):curTot;
-  const card=h("div",{style:{background:C.wh,borderRadius:"10px",padding:"14px",marginTop:"8px"}});
-  card.appendChild(h("div",{className:"flex between center"},
-    h("div",{},h("div",{style:{fontWeight:700,fontSize:"15px"}},j.name),h("div",{style:{fontSize:"12px",color:"#888"}},(g?g.name:"")+" • Through "+thru+" holes")),
-    h("div",{style:{textAlign:"right"}},h("div",{style:{fontSize:"28px",fontWeight:800,color:onPace?C.gr:C.red}},String(curTot)),h("div",{style:{fontSize:"11px",color:onPace?C.gr:C.red,fontWeight:600}},(curTot-parThru>=0?"+":"")+(curTot-parThru)+" to par"))
-  ));
-  const holes=h("div",{className:"flex gap-4",style:{margin:"10px 0"}});
-  r.holes.forEach((hv,i)=>{
-    const played=i<thru,par=pars[i]||4,diff=hv-par;
-    const bg=!played?"transparent":diff<=-1?C.gr+"15":diff>=2?C.red+"15":"transparent";
-    const bc=!played?"#ddd":diff<=-1?C.gr:diff>=1?C.red:C.lt;
-    holes.appendChild(h("div",{style:{flex:1,textAlign:"center"}},
-      h("div",{style:{fontSize:"9px",color:"#aaa"}},String(i+1)),
-      h("div",{style:{fontSize:"13px",fontWeight:700,width:"28px",height:"28px",lineHeight:"28px",margin:"0 auto",borderRadius:Math.abs(diff)>=2?"50%":"4px",border:played?"2px solid "+bc:"1px dashed #ddd",background:bg,color:!played?"#ccc":diff<=-1?C.gr:diff>=1?C.red:C.ch}},played?String(hv):"–"),
-      h("div",{style:{fontSize:"8px",color:"#bbb"}},String(par))
-    ));
-  });
-  card.appendChild(holes);
-  const pace=h("div",{style:{background:(onPace?C.gr:C.red)+"10",borderRadius:"8px",padding:"10px",marginTop:"6px"}});
-  pace.appendChild(h("div",{className:"flex between",style:{fontSize:"13px"}},
-    h("span",{style:{fontWeight:600,color:onPace?C.gr:C.red}},onPace?"On pace to qualify":"Off pace — needs to rally"),
-    h("span",{style:{fontWeight:700}},"Target: "+t)
-  ));
-  if(rem>0){
-    pace.appendChild(h("div",{style:{fontSize:"12px",color:"#666",marginTop:"4px"}},
-      budget>0?`Needs ${budget} over ${rem} holes (avg ${avgN}/hole) • Projected: ${proj}`:`Already ${Math.abs(budget)} over target with ${rem} holes left`
-    ));
-  }
-  card.appendChild(pace);
-  return card;
-}
-
-function parentDash(){
-  const wrap=h("div",{});
-  const mine=JUNIORS.slice(0,2),liveKids=mine.filter(j=>j.live);
-  const hero=h("div",{className:"hero"},h("h2",{},"Welcome back!"),h("p",{},liveKids.length>0?liveKids.map(k=>k.name).join(" & ")+" currently on the course":"Next play day is Thursday"));
-  wrap.appendChild(hero);
-  if(liveKids.length>0){
-    const lb=h("div",{className:"live-border"},h("div",{className:"flex center gap-8",style:{marginBottom:"8px"}},h("div",{className:"live-dot"}),h("span",{style:{fontWeight:700,color:C.dk,fontSize:"14px"}},"LIVE ON COURSE")));
-    liveKids.forEach(j=>lb.appendChild(liveMiniCard(j)));
-    wrap.appendChild(lb);
-  }
-  mine.forEach(j=>wrap.appendChild(juniorCard(j)));
-  const sc=h("div",{className:"card"},h("h3",{style:{margin:"0 0 10px",color:C.dk,fontSize:"15px"}},"Scoring Obligations"),
-    h("div",{className:"flex between",style:{fontSize:"13px",marginBottom:"8px"}},h("span",{innerHTML:"Regular season: <strong>2 of 3</strong>"}),h("span",{innerHTML:"Tournament: <strong>Pending</strong>"})),
-    bar(2,4),h("div",{style:{marginTop:"8px",fontSize:"12px",color:"#888"},innerHTML:"Next assigned: <strong>Jun 27 (Thu)</strong>"})
-  );
-  wrap.appendChild(sc);
-  const sw=h("div",{className:"card"},h("h3",{style:{margin:"0 0 10px",color:C.dk,fontSize:"15px"}},"Scorer Swap Board"));
-  SWAPS.forEach(s=>{
-    sw.appendChild(h("div",{className:"flex between center",style:{padding:"10px 0",borderBottom:"1px solid "+C.lt}},
-      h("div",{},h("div",{style:{fontSize:"13px",fontWeight:600}},s.from+" wants to swap"),h("div",{style:{fontSize:"12px",color:"#888"}},"Has: "+s.fromDate+" • Wants: "+s.seeking)),
-      h("button",{className:"btn btn-gr btn-sm"},"Offer Swap")
-    ));
-  });
-  wrap.appendChild(sw);
-  return wrap;
-}
-
-function liveTracker(){
-  const wrap=h("div",{}),lk=JUNIORS.filter(j=>j.live);
-  if(!lk.length)return h("div",{style:{textAlign:"center",padding:"40px"}},h("div",{style:{fontSize:"48px",marginBottom:"12px"}},"⛳"),h("h3",{style:{color:C.dk}},"No Active Rounds"),h("p",{style:{color:"#888",fontSize:"14px"}},"When your child is on the course, their live scores will appear here."));
-  wrap.appendChild(h("div",{className:"flex center gap-8"},h("div",{className:"live-dot"}),h("h2",{style:{color:C.dk,fontSize:"20px"}},"Live Round Tracker")));
-  lk.forEach(j=>{
-    const g=GROUPS.find(x=>x.id===j.group),t=getThreshold(g,j.g)||55,r=j.live,pars=g?g.pars:[],thru=r.through;
-    const scored=r.holes.slice(0,thru),curTot=scored.reduce((a,b)=>a+b,0),parThru=pars.slice(0,thru).reduce((a,b)=>a+b,0);
-    const totalH=typeof g?.holes==="number"?g.holes:9,rem=totalH-thru,budget=t-curTot;
-    const avgN=rem>0?(budget/rem).toFixed(1):0,onPace=rem>0?curTot<=(t*(thru/totalH)):curTot<=t;
-    const proj=rem>0?Math.round(curTot+(curTot/thru)*rem):curTot,delta=curTot-parThru;
-    const card=h("div",{style:{background:C.wh,borderRadius:"14px",overflow:"hidden",boxShadow:"0 2px 10px rgba(0,0,0,.1)",marginTop:"16px"}});
-    card.appendChild(h("div",{style:{background:`linear-gradient(135deg,${C.dk},${C.gr})`,padding:"16px",color:"#fff"}},
-      h("div",{className:"flex between center"},
-        h("div",{},h("div",{style:{fontSize:"18px",fontWeight:700}},j.name),h("div",{style:{fontSize:"12px",opacity:.8}},(g?g.name:"")+" • "+(g?g.course:""))),
-        h("div",{style:{textAlign:"right"}},h("div",{style:{fontSize:"36px",fontWeight:800,color:C.gold}},String(curTot)),h("div",{style:{fontSize:"12px",color:delta>=0?"#ff9800":"#8bc34a"}},(delta>=0?"+":"")+delta+" thru "+thru))
-      )
-    ));
-    const body=h("div",{style:{padding:"16px"}});
-    const holesRow=h("div",{className:"flex gap-4",style:{marginBottom:"16px"}});
-    r.holes.forEach((hv,i)=>{
-      const played=i<thru,par=pars[i]||4,diff=hv-par;
-      const bg=!played?"transparent":diff<=-1?C.gr+"20":diff>=2?C.red+"25":"transparent";
-      const bc=!played?"#ddd":diff<=-1?C.gr:diff>=1?C.red:C.lt;
-      holesRow.appendChild(h("div",{style:{flex:1,textAlign:"center"}},
-        h("div",{style:{fontSize:"9px",color:"#aaa",marginBottom:"2px"}},"H"+(i+1)),
-        h("div",{style:{fontSize:"14px",fontWeight:700,height:"32px",lineHeight:"32px",margin:"0 auto",borderRadius:Math.abs(diff)>=2?"50%":"4px",width:"32px",border:played?"2px solid "+bc:"1px dashed #ddd",background:bg,color:!played?"#ccc":diff<=-1?C.gr:diff>=1?C.red:C.ch}},played?String(hv):"–"),
-        h("div",{style:{fontSize:"8px",color:"#bbb",marginTop:"1px"}},"P"+par)
-      ));
-    });
-    body.appendChild(holesRow);
-    const paceBox=h("div",{style:{background:(onPace?C.gr:C.red)+"08",border:"2px solid "+(onPace?C.gr:C.red),borderRadius:"10px",padding:"14px"}});
-    paceBox.appendChild(h("div",{className:"flex between center",style:{marginBottom:"6px"}},
-      h("div",{style:{fontWeight:700,fontSize:"15px",color:onPace?C.gr:C.red}},onPace?"ON PACE":"OFF PACE"),
-      h("div",{style:{fontSize:"13px"},innerHTML:`Target: <strong>${t}</strong> | Projected: <strong style="color:${proj<=t?C.gr:C.red}">${proj}</strong>`})
-    ));
-    if(rem>0)paceBox.appendChild(h("div",{style:{fontSize:"13px",color:C.ch,lineHeight:"1.5"},innerHTML:budget>0?`Has <strong>${budget} strokes</strong> left over <strong>${rem} holes</strong> — needs to average <strong style="color:${avgN<=5?C.gr:C.red}">${avgN}</strong> per hole`:`Already <strong style="color:${C.red}">${Math.abs(budget)} over target</strong> with ${rem} holes left`}));
-    const barWrap=h("div",{style:{marginTop:"8px"}});
-    barWrap.appendChild(h("div",{className:"flex between",style:{fontSize:"11px",color:"#888",marginBottom:"3px"}},h("span",{},"Progress to target"),h("span",{},curTot+" / "+t)));
-    const barOuter=h("div",{style:{background:C.lt,borderRadius:"10px",height:"10px",overflow:"hidden",position:"relative"}});
-    barOuter.appendChild(h("div",{style:{background:onPace?C.gr:C.red,height:"100%",width:Math.min(curTot/t*100,100)+"%",borderRadius:"10px"}}));
-    barOuter.appendChild(h("div",{style:{position:"absolute",left:(parThru/t*100)+"%",top:0,width:"2px",height:"100%",background:"#999",opacity:.5}}));
-    barWrap.appendChild(barOuter);
-    barWrap.appendChild(h("div",{className:"flex between",style:{fontSize:"10px",color:"#aaa",marginTop:"2px"}},h("span",{},"0"),h("span",{},"Par ("+parThru+")"),h("span",{},String(t))));
-    paceBox.appendChild(barWrap);
-    body.appendChild(paceBox);
-    card.appendChild(body);
-    wrap.appendChild(card);
-  });
-  return wrap;
-}
-
-function scoresView(){
-  const wrap=h("div",{},h("h2",{style:{margin:"0 0 14px",color:C.dk,fontSize:"20px"}},"Score Tracker"));
-  JUNIORS.forEach(j=>{
-    const adv=checkAdv(j),g=GROUPS.find(x=>x.id===j.group),t=getThreshold(g,j.g);
-    const card=h("div",{className:"card"});
-    card.appendChild(h("div",{className:"flex between center",style:{marginBottom:"6px"}},
-      h("div",{},h("span",{style:{fontWeight:700}},j.name),h("span",{style:{fontSize:"11px",color:"#888",marginLeft:"8px"}},(g?g.name:"")+(t?" • Target: "+t:""))),
-      adv.ready?h("span",{className:"badge",style:{background:C.gold,color:C.dk}},"Advance!"):null
-    ));
-    const sc=h("div",{className:"flex gap-6 wrap",style:{marginBottom:"6px"}});
-    j.scores.forEach(s=>{const q=t&&s<=t;sc.appendChild(h("span",{style:{background:q?C.gr+"12":C.cr,border:q?"2px solid "+C.gr:"1px solid "+C.lt,padding:"3px 9px",borderRadius:"6px",fontSize:"13px",fontWeight:700,color:q?C.gr:C.ch}},String(s)))});
-    card.appendChild(sc);
-    card.appendChild(h("div",{style:{fontSize:"11px",color:"#888"}},adv.detail));
-    card.appendChild(bar(adv.q,adv.need,adv.ready?C.gold:C.gr));
-    wrap.appendChild(card);
-  });
-  return wrap;
-}
-
-function requestScorer(){
-  const wrap=h("div",{});
-  if(state.scorerReqStep==="confirm"&&state.scorerReqSent){
-    const g=GROUPS.find(x=>x.name===state.scorerReqGroup);
-    wrap.appendChild(h("div",{style:{textAlign:"center",padding:"40px"}},
-      h("div",{style:{fontSize:"48px",marginBottom:"12px"}},"✅"),
-      h("h3",{style:{color:C.dk}},"Scorer Requested!"),
-      h("p",{style:{color:"#666",fontSize:"14px",margin:"10px 0 16px"}},"The Golf Shop will locate a paid scorer."),
-      h("div",{style:{background:C.cr,borderRadius:"10px",padding:"16px",display:"inline-block",textAlign:"left"}},
-        h("div",{style:{fontSize:"13px"},innerHTML:`<strong>Date:</strong> ${state.scorerReqDate}`}),
-        h("div",{style:{fontSize:"13px"},innerHTML:`<strong>Group:</strong> ${state.scorerReqGroup}`}),
-        h("div",{style:{fontSize:"13px",marginTop:"8px"},innerHTML:`<strong>Rate:</strong> $${g?g.rate:30}`})
-      ),
-      h("div",{style:{marginTop:"20px"}},h("button",{className:"btn btn-gr",onClick:()=>{state.scorerReqStep="list";state.scorerReqSent=false;state.scorerReqDate="";state.scorerReqGroup="";render()}},"Done"))
-    ));
-    return wrap;
-  }
-  if(state.scorerReqStep==="new"){
-    wrap.appendChild(h("button",{style:{background:"none",border:"none",color:C.gr,fontSize:"13px",cursor:"pointer",padding:0,marginBottom:"8px"},onClick:()=>{state.scorerReqStep="list";render()}},"← Back"));
-    wrap.appendChild(h("h2",{style:{margin:"0 0 16px",color:C.dk,fontSize:"20px"}},"Request Paid Scorer"));
-    const card=h("div",{className:"card"});
-    card.appendChild(h("label",{style:{fontSize:"13px",fontWeight:600,display:"block",marginBottom:"6px"}},"Date Needed"));
-    const ds=h("select",{style:{width:"100%",padding:"10px 12px",border:"1px solid "+C.lt,borderRadius:"8px",fontSize:"14px",marginBottom:"16px"},onChange:e=>{state.scorerReqDate=e.target.value;render()}});
-    ds.appendChild(h("option",{value:""},"Select date..."));
-    ["Jun 27 (Thu)","Jun 28 (Fri)","Jul 11 (Thu)","Jul 12 (Fri)","Jul 18 (Thu) - Tournament","Jul 19 (Fri) - Tournament"].forEach(d=>ds.appendChild(h("option",{selected:state.scorerReqDate===d?true:undefined},d)));
-    card.appendChild(ds);
-    card.appendChild(h("label",{style:{fontSize:"13px",fontWeight:600,display:"block",marginBottom:"6px"}},"Group"));
-    const gs=h("select",{style:{width:"100%",padding:"10px 12px",border:"1px solid "+C.lt,borderRadius:"8px",fontSize:"14px",marginBottom:"16px"},onChange:e=>{state.scorerReqGroup=e.target.value;render()}});
-    gs.appendChild(h("option",{value:""},"Select group..."));
-    GROUPS.forEach(g=>gs.appendChild(h("option",{value:g.name,selected:state.scorerReqGroup===g.name?true:undefined},g.name+" ($"+g.rate+")")));
-    card.appendChild(gs);
-    if(state.scorerReqDate&&state.scorerReqGroup){
-      const gr=GROUPS.find(x=>x.name===state.scorerReqGroup);
-      card.appendChild(h("div",{style:{background:C.cr,borderRadius:"10px",padding:"14px",marginBottom:"16px"}},
-        h("div",{style:{fontSize:"14px",fontWeight:600,color:C.dk}},"Paid Scorer Rate: $"+(gr?gr.rate:30)),
-        h("div",{style:{fontSize:"12px",color:"#666",marginTop:"4px"}},"Leave cash at the Golf Shop or pay via Venmo.")
-      ));
+  
+  // Quick kid summary
+  mine.forEach(j=>{
+    const adv=cA(j),g=GROUPS.find(x=>x.id===j.group),t=gT(g,j.g);
+    const scores=j.scores||[],best=scores.length?Math.min(...scores):null,avg=scores.length?(scores.reduce((a,b)=>a+b,0)/scores.length).toFixed(1):null;
+    const card=h("div",{className:"c",style:{cursor:"pointer"},onClick:()=>{S.page="My Kids";S.sk=JUNIORS.slice(0,2).indexOf(j);R()}});
+    card.appendChild(h("div",{className:"f sb ac",style:{marginBottom:"8px"}},h("div",{},h("div",{style:{fontSize:"17px",fontWeight:700}},j.name),h("div",{style:{fontSize:"12px",color:"#888"}},"Age "+j.age+" • "+(g?g.name:"")+" • "+(g?g.day:"")+"s")),adv.r?h("span",{className:"badge",style:{background:C.gold,color:C.dk}},"Ready to Advance!"):null));
+    if(t){
+      const sg=h("div",{className:"f g8 w",style:{marginBottom:"8px"}});
+      [{l:"Target",v:t},{l:"Best",v:best||"–"},{l:"Avg",v:avg||"–"}].forEach(s=>sg.appendChild(h("div",{style:{background:C.cr,borderRadius:"8px",padding:"5px 10px",flex:"1 1 60px",textAlign:"center"}},h("div",{style:{fontSize:"9px",color:"#888"}},s.l),h("div",{style:{fontSize:"18px",fontWeight:800,color:C.dk}},String(s.v)))));
+      card.appendChild(sg);
     }
-    const ready=state.scorerReqDate&&state.scorerReqGroup;
-    card.appendChild(h("button",{className:"btn",style:{width:"100%",padding:"12px",background:ready?C.gr:C.lt,color:ready?"#fff":"#999",fontSize:"15px",fontWeight:700},onClick:()=>{if(ready){state.scorerReqStep="confirm";state.scorerReqSent=true;render()}}},"Submit Request to Golf Shop"));
-    wrap.appendChild(card);
-    return wrap;
-  }
-  wrap.appendChild(h("div",{className:"flex between center",style:{marginBottom:"16px"}},
-    h("h2",{style:{margin:0,color:C.dk,fontSize:"20px"}},"Scorer Requests"),
-    h("button",{className:"btn btn-gr",onClick:()=>{state.scorerReqStep="new";render()}},"+ Request Scorer")
-  ));
-  const venmo=h("div",{style:{background:C.ven+"10",border:"1px solid "+C.ven+"40",borderRadius:"10px",padding:"14px",marginBottom:"12px"}});
-  venmo.appendChild(h("div",{className:"flex center gap-8",style:{marginBottom:"6px"}},h("div",{style:{background:C.ven,color:"#fff",borderRadius:"6px",padding:"3px 8px",fontSize:"12px",fontWeight:700}},"Venmo"),h("span",{style:{fontSize:"13px",fontWeight:600}},"Pay Your Scorer")));
-  venmo.appendChild(h("div",{style:{fontSize:"12px",color:"#666",marginBottom:"10px"}},"Tap below to pay your assigned scorer directly via Venmo."));
-  venmo.appendChild(h("a",{href:"https://venmo.com",target:"_blank",style:{display:"inline-flex",alignItems:"center",gap:"6px",background:C.ven,color:"#fff",padding:"8px 20px",borderRadius:"8px",fontSize:"14px",fontWeight:700,textDecoration:"none"}},"Open Venmo to Pay"));
-  wrap.appendChild(venmo);
-  const reqs=h("div",{className:"card"},h("h3",{style:{margin:"0 0 10px",fontSize:"15px",color:C.dk}},"Your Requests"));
-  SCORER_REQS.forEach(r=>{
-    reqs.appendChild(h("div",{className:"flex between center",style:{padding:"12px 0",borderBottom:"1px solid "+C.lt}},
-      h("div",{},h("div",{style:{fontSize:"14px",fontWeight:600}},r.date+" — "+r.group),h("div",{style:{fontSize:"12px",color:"#888"}},"Rate: $"+r.rate)),
-      h("span",{className:"badge",style:{background:r.status==="filled"?C.gr+"15":C.gold+"20",color:r.status==="filled"?C.gr:C.dkg}},r.status==="filled"?"Filled: "+r.scorer:"Pending")
-    ));
+    card.appendChild(h("div",{className:"f sb",style:{fontSize:"12px",marginBottom:"4px"}},h("span",{style:{color:"#666"}},"Advancement"),h("span",{style:{fontWeight:600,color:adv.r?C.gold:C.gr}},adv.d)));
+    card.appendChild(bar(adv.q,adv.n,adv.r?C.gold:C.gr));
+    card.appendChild(h("div",{style:{textAlign:"right",fontSize:"12px",color:C.gr,marginTop:"6px",fontWeight:600}},"View full profile →"));
+    w.appendChild(card);
   });
-  wrap.appendChild(reqs);
-  const rates=h("div",{className:"card"},h("h3",{style:{margin:"0 0 8px",fontSize:"15px",color:C.dk}},"Paid Scorer Rates"));
-  [{g:"Skills & Valley 5-Hole",r:25},{g:"Valley 9-Hole",r:30},{g:"Junior Champ 9",r:35},{g:"Championship 9",r:35},{g:"Championship 18",r:35}].forEach((x,i)=>{
-    rates.appendChild(h("div",{className:"flex between",style:{padding:"6px 0",fontSize:"13px",borderBottom:i<4?"1px solid "+C.lt:"none"}},h("span",{},x.g),h("strong",{},"$"+x.r)));
-  });
-  wrap.appendChild(rates);
-  return wrap;
+  
+  // Scoring obligations
+  w.appendChild(h("div",{className:"c"},h("h3",{style:{margin:"0 0 8px",color:C.dk,fontSize:"15px"}},"Your Scoring Obligations"),h("div",{className:"f sb",style:{fontSize:"13px",marginBottom:"8px"}},h("span",{innerHTML:"Regular: <strong>2/3</strong>"}),h("span",{innerHTML:"Tournament: <strong>Pending</strong>"})),bar(2,4),h("div",{style:{marginTop:"8px",fontSize:"12px",color:"#888"},innerHTML:"Next assigned: <strong>Jun 27 (Thu)</strong>"})));
+  return w;
 }
 
-function scheduleView(){
-  const wrap=h("div",{},h("h2",{style:{margin:"0 0 14px",color:C.dk,fontSize:"20px"}},"2019 Season Schedule"));
+// ===== MY KIDS =====
+function myKids(){
+  const mine=JUNIORS.slice(0,2),w=h("div",{});
+  const tabs=h("div",{className:"f g6",style:{marginBottom:"16px"}});
+  mine.forEach((j,i)=>tabs.appendChild(h("button",{style:{flex:1,padding:"10px",background:S.sk===i?C.dk:C.wh,color:S.sk===i?"#fff":C.ch,border:"1px solid "+(S.sk===i?C.dk:C.lt),borderRadius:"10px",fontSize:"14px",fontWeight:S.sk===i?700:500,cursor:"pointer"},onClick:()=>{S.sk=i;R()}},j.name)));
+  w.appendChild(tabs);
+  const j=mine[S.sk],g=GROUPS.find(x=>x.id===j.group),t=gT(g,j.g),adv=cA(j),priv=cP(j);
+  const sc=j.scores||[],best=sc.length?Math.min(...sc):null,worst=sc.length?Math.max(...sc):null,avg=sc.length?(sc.reduce((a,b)=>a+b,0)/sc.length).toFixed(1):null;
+  const trend=sc.length>=2?sc[sc.length-1]-sc[sc.length-2]:0,imp=sc.length>=2?sc[0]-sc[sc.length-1]:0;
+  
+  // Profile
+  const prof=h("div",{style:{background:`linear-gradient(135deg,${C.dk},${C.gr})`,borderRadius:"16px",padding:"24px",color:"#fff",marginBottom:"16px"}});
+  const pi=h("div",{className:"f g12 ac"});
+  const pUrl=S.kp[j.id];
+  const pa=h("div",{style:{width:"90px",height:"90px",borderRadius:"50%",border:"3px solid "+C.gold,overflow:"hidden",flexShrink:0,background:"rgba(255,255,255,.15)",display:"flex",alignItems:"center",justifyContent:"center",cursor:"pointer",position:"relative"}});
+  if(pUrl)pa.appendChild(h("img",{src:pUrl,style:{width:"100%",height:"100%",objectFit:"cover"}}));
+  else pa.appendChild(h("div",{style:{textAlign:"center"}},h("div",{style:{fontSize:"28px"}},"📷"),h("div",{style:{fontSize:"8px",opacity:.7,marginTop:"2px"}},"Add Photo")));
+  const fi=h("input",{type:"file",accept:"image/*",style:{display:"none"}});
+  fi.addEventListener("change",e=>{const f=e.target.files[0];if(f){const r=new FileReader();r.onload=ev=>{S.kp[j.id]=ev.target.result;R()};r.readAsDataURL(f)}});
+  pa.addEventListener("click",()=>fi.click());pa.appendChild(fi);
+  pa.appendChild(h("div",{style:{position:"absolute",bottom:0,right:0,background:C.gold,borderRadius:"50%",width:"24px",height:"24px",display:"flex",alignItems:"center",justifyContent:"center",fontSize:"12px"}},"✏️"));
+  pi.appendChild(pa);
+  const inf=h("div",{style:{flex:1}});
+  inf.appendChild(h("div",{style:{fontSize:"22px",fontWeight:700}},j.name));
+  inf.appendChild(h("div",{style:{opacity:.8,fontSize:"13px",marginTop:"2px"}},"Age "+j.age+" • "+(j.g==="M"?"Boy":"Girl")));
+  inf.appendChild(h("div",{style:{marginTop:"8px"}},h("span",{style:{background:"rgba(255,255,255,.2)",padding:"4px 10px",borderRadius:"6px",fontSize:"12px",fontWeight:600}},g?g.name:""),h("span",{style:{background:"rgba(255,255,255,.15)",padding:"4px 10px",borderRadius:"6px",fontSize:"12px",marginLeft:"6px"}},g?g.day+"s":"")));
+  if(adv.r)inf.appendChild(h("div",{style:{marginTop:"8px"}},h("span",{style:{background:C.gold,color:C.dk,padding:"4px 12px",borderRadius:"20px",fontSize:"11px",fontWeight:700}},"Ready to Advance!")));
+  pi.appendChild(inf);prof.appendChild(pi);w.appendChild(prof);
+  
+  // Stats
+  const stc=h("div",{className:"c"},h("h3",{style:{margin:"0 0 12px",color:C.dk,fontSize:"16px"}},"Season Statistics"));
+  const stg=h("div",{className:"f g8 w"});
+  [{l:"Rounds",v:sc.length,c:C.dk},{l:"Best",v:best||"–",c:best&&t&&best<=t?C.gr:C.ch},{l:"Worst",v:worst||"–",c:C.ch},{l:"Average",v:avg||"–",c:C.ch},{l:"Trend",v:trend<0?"↓"+Math.abs(trend):trend>0?"↑"+trend:"—",c:trend<0?C.gr:trend>0?C.red:C.ch},{l:"Improved",v:imp>0?imp+" strk":"–",c:imp>0?C.gr:C.ch}].forEach(s=>stg.appendChild(h("div",{style:{background:C.cr,borderRadius:"10px",padding:"10px 14px",flex:"1 1 80px",textAlign:"center",minWidth:"70px"}},h("div",{style:{fontSize:"10px",color:"#888",textTransform:"uppercase",letterSpacing:"1px"}},s.l),h("div",{style:{fontSize:"20px",fontWeight:800,color:s.c,marginTop:"2px"}},String(s.v)))));
+  stc.appendChild(stg);w.appendChild(stc);
+  
+  // Advancement
+  const ac2=h("div",{className:"c"},h("h3",{style:{margin:"0 0 12px",color:C.dk,fontSize:"16px"}},"Advancement Progress"));
+  if(t){
+    ac2.appendChild(h("div",{className:"f sb",style:{fontSize:"13px",marginBottom:"6px"}},h("span",{style:{color:"#666"}},"Target: "+t+" or lower"),h("span",{style:{fontWeight:700,color:adv.r?C.gold:C.gr}},adv.d)));
+    ac2.appendChild(bar(adv.q,adv.n,adv.r?C.gold:C.gr));
+    const rw=h("div",{style:{marginTop:"14px"}});
+    rw.appendChild(h("div",{style:{fontSize:"12px",fontWeight:600,color:"#888",marginBottom:"8px"}},"All Rounds"));
+    const rr=h("div",{className:"f g6 w"});
+    sc.forEach((s,i)=>{const q=s<=t;rr.appendChild(h("div",{style:{textAlign:"center"}},h("div",{style:{fontSize:"10px",color:"#aaa"}},"Wk"+(i+1)),h("div",{style:{width:"40px",height:"40px",lineHeight:"40px",borderRadius:"50%",background:q?C.gr+"15":"transparent",border:"2px solid "+(q?C.gr:C.lt),fontSize:"15px",fontWeight:700,color:q?C.gr:C.ch,textAlign:"center"}},String(s))))});
+    rw.appendChild(rr);ac2.appendChild(rw);
+  }else ac2.appendChild(h("div",{style:{fontSize:"13px",color:"#888"}},"Top group — Club Champion determined at tournament."));
+  w.appendChild(ac2);
+  
+  // Chart
+  if(sc.length>=2){
+    const cc=h("div",{className:"c"},h("h3",{style:{margin:"0 0 12px",color:C.dk,fontSize:"16px"}},"Score Progression"));
+    const cH=120,cW=280,mxS=Math.max(...sc)+5,mnS=Math.min(...sc)-5,rng=mxS-mnS||1;
+    const svg=document.createElementNS("http://www.w3.org/2000/svg","svg");
+    svg.setAttribute("viewBox","0 0 "+(cW+40)+" "+(cH+30));svg.setAttribute("width","100%");svg.style.display="block";
+    if(t){const tY=cH-((t-mnS)/rng)*cH;const tL=document.createElementNS("http://www.w3.org/2000/svg","line");tL.setAttribute("x1","30");tL.setAttribute("y1",tY);tL.setAttribute("x2",cW+30);tL.setAttribute("y2",tY);tL.setAttribute("stroke",C.gr);tL.setAttribute("stroke-width","1.5");tL.setAttribute("stroke-dasharray","6,3");svg.appendChild(tL);const tLb=document.createElementNS("http://www.w3.org/2000/svg","text");tLb.setAttribute("x","28");tLb.setAttribute("y",tY-4);tLb.setAttribute("fill",C.gr);tLb.setAttribute("font-size","9");tLb.setAttribute("text-anchor","end");tLb.textContent=t;svg.appendChild(tLb)}
+    const pts=sc.map((s,i)=>({x:30+(i/(sc.length-1))*cW,y:cH-((s-mnS)/rng)*cH,s}));
+    const aP=document.createElementNS("http://www.w3.org/2000/svg","path");let aD="M"+pts[0].x+","+pts[0].y;pts.slice(1).forEach(p=>aD+=" L"+p.x+","+p.y);aD+=" L"+pts[pts.length-1].x+","+cH+" L"+pts[0].x+","+cH+" Z";aP.setAttribute("d",aD);aP.setAttribute("fill",C.gr+"15");svg.appendChild(aP);
+    const lP=document.createElementNS("http://www.w3.org/2000/svg","path");let lD="M"+pts[0].x+","+pts[0].y;pts.slice(1).forEach(p=>lD+=" L"+p.x+","+p.y);lP.setAttribute("d",lD);lP.setAttribute("fill","none");lP.setAttribute("stroke",C.gr);lP.setAttribute("stroke-width","2.5");svg.appendChild(lP);
+    pts.forEach((p,i)=>{const q=t&&p.s<=t;const ci=document.createElementNS("http://www.w3.org/2000/svg","circle");ci.setAttribute("cx",p.x);ci.setAttribute("cy",p.y);ci.setAttribute("r",q?"6":"5");ci.setAttribute("fill",q?C.gr:C.wh);ci.setAttribute("stroke",q?C.gr:C.ch);ci.setAttribute("stroke-width","2");svg.appendChild(ci);const lb=document.createElementNS("http://www.w3.org/2000/svg","text");lb.setAttribute("x",p.x);lb.setAttribute("y",p.y-10);lb.setAttribute("fill",q?C.gr:C.ch);lb.setAttribute("font-size","10");lb.setAttribute("font-weight","700");lb.setAttribute("text-anchor","middle");lb.textContent=p.s;svg.appendChild(lb);const wk=document.createElementNS("http://www.w3.org/2000/svg","text");wk.setAttribute("x",p.x);wk.setAttribute("y",cH+14);wk.setAttribute("fill","#aaa");wk.setAttribute("font-size","9");wk.setAttribute("text-anchor","middle");wk.textContent="Wk"+(i+1);svg.appendChild(wk)});
+    cc.appendChild(svg);w.appendChild(cc);
+  }
+  
+  // Journey
+  const jn=h("div",{className:"c"},h("h3",{style:{margin:"0 0 14px",color:C.dk,fontSize:"16px"}},"Program Journey"));
+  const ci2=GROUPS.findIndex(x=>x.id===j.group);
+  GROUPS.forEach((gr,i)=>{const ic=i===ci2,ip=i<ci2,ifu=i>ci2;const row=h("div",{className:"f g12"});const tl=h("div",{style:{display:"flex",flexDirection:"column",alignItems:"center",width:"24px",flexShrink:0}});tl.appendChild(h("div",{style:{width:ic?"18px":"12px",height:ic?"18px":"12px",borderRadius:"50%",background:ip?C.gr:ic?C.gold:"transparent",border:ifu?"2px solid "+C.lt:ic?"3px solid "+C.gold:"none",boxShadow:ic?"0 0 8px "+C.gold+"60":"none",flexShrink:0}}));if(i<GROUPS.length-1)tl.appendChild(h("div",{style:{width:"2px",height:"36px",background:ip?C.gr:C.lt,flexShrink:0}}));row.appendChild(tl);const ct=h("div",{style:{flex:1,paddingBottom:"12px"}});ct.appendChild(h("div",{style:{fontSize:"14px",fontWeight:ic?700:ip?600:400,color:ifu?"#bbb":C.ch}},gr.name));ct.appendChild(h("div",{style:{fontSize:"11px",color:ifu?"#ccc":"#888"}},gr.day+"s • "+gr.course));if(ip)ct.appendChild(h("div",{style:{fontSize:"11px",color:C.gr,fontWeight:600,marginTop:"2px"}},"✓ Completed"));if(ic)ct.appendChild(h("div",{style:{fontSize:"11px",color:C.gold,fontWeight:600,marginTop:"2px"}},"Current — "+adv.d));row.appendChild(ct);jn.appendChild(row)});
+  w.appendChild(jn);
+  
+  // Privilege card
+  if(["jc9","c9","c18"].includes(j.group)){
+    const pc=h("div",{className:"c",style:{borderLeft:"4px solid "+C.blu}},h("h3",{style:{margin:"0 0 10px",color:C.dk,fontSize:"16px"}},"Privilege Card"),h("div",{className:"f sb",style:{fontSize:"13px",marginBottom:"6px"}},h("span",{},(j.g==="M"?"Boys":"Girls")+": 5 rounds of "+priv.t+" or better"),h("span",{style:{fontWeight:700,color:priv.e?C.gold:C.blu}},priv.e?"Earned!":priv.q+"/5")),bar(priv.q,5,priv.e?C.gold:C.blu));
+    w.appendChild(pc);
+  }
+  
+  // Practice
+  const pr=h("div",{className:"c"},h("h3",{style:{margin:"0 0 10px",color:C.dk,fontSize:"16px"}},"Practice Focus"));
+  const areas=[];
+  if(avg&&t&&parseFloat(avg)>t)areas.push({a:"Overall Scoring",tip:"Avg "+avg+" vs target "+t+". Focus on consistent ball striking.",p:"high"});
+  if(trend>0)areas.push({a:"Recent Form",tip:"Score went up by "+trend+". Consider a short lesson.",p:"medium"});
+  areas.push({a:"Short Game",tip:"Putting/chipping is 60%+ of junior scores. Practice green time is key.",p:"high"});
+  areas.push({a:"Course Management",tip:"Play to center of greens, avoid trouble. Smart > long.",p:"medium"});
+  areas.forEach(a=>{const pc2=a.p==="high"?C.red:C.gold;pr.appendChild(h("div",{style:{padding:"8px 0",borderBottom:"1px solid "+C.lt}},h("div",{className:"f sb ac"},h("div",{style:{fontWeight:600,fontSize:"13px"}},a.a),h("span",{style:{fontSize:"10px",fontWeight:700,color:pc2,background:pc2+"15",padding:"2px 8px",borderRadius:"10px"}},a.p.toUpperCase())),h("div",{style:{fontSize:"12px",color:"#666",marginTop:"3px"}},a.tip)))});
+  pr.appendChild(h("div",{style:{marginTop:"10px",padding:"10px",background:C.cr,borderRadius:"8px",fontSize:"12px",color:"#666"},innerHTML:"<strong>Book a lesson:</strong> Call the Golf Shop at (636) 227-1528"}));
+  w.appendChild(pr);
+  return w;
+}
+
+// ===== SCORECARD HISTORY =====
+function historyV(){
+  const w=h("div",{},h("h2",{style:{margin:"0 0 14px",color:C.dk,fontSize:"20px"}},"Scorecard History"));
+  const mine=JUNIORS.slice(0,2);
+  const tabs=h("div",{className:"f g6",style:{marginBottom:"14px"}});
+  mine.forEach((j,i)=>tabs.appendChild(h("button",{style:{flex:1,padding:"8px",background:S.sk===i?C.dk:C.wh,color:S.sk===i?"#fff":C.ch,border:"1px solid "+(S.sk===i?C.dk:C.lt),borderRadius:"8px",fontSize:"13px",fontWeight:S.sk===i?700:500,cursor:"pointer"},onClick:()=>{S.sk=i;R()}},j.name)));
+  w.appendChild(tabs);
+  const j=mine[S.sk],g=GROUPS.find(x=>x.id===j.group),t=gT(g,j.g);
+  if(!j.history||!j.history.length){
+    w.appendChild(h("div",{style:{textAlign:"center",padding:"40px"}},h("div",{style:{fontSize:"48px"}},"📋"),h("h3",{style:{color:C.dk,margin:"8px 0"}},"No Detailed Scorecards Yet"),h("p",{style:{color:"#888",fontSize:"14px"}},"Hole-by-hole history will appear here after rounds are scored in the app.")));
+    return w;
+  }
+  j.history.forEach((rd,ri)=>{
+    const q=t&&rd.total<=t;
+    const card=h("div",{className:"c",style:{cursor:"pointer",borderLeft:"4px solid "+(q?C.gr:C.lt)},onClick:()=>{S.hJunior=j.id;S.hWeek=S.hWeek===ri?null:ri;R()}});
+    card.appendChild(h("div",{className:"f sb ac"},h("div",{},h("span",{style:{fontWeight:700,fontSize:"15px"}},"Week "+rd.wk),h("span",{style:{fontSize:"12px",color:"#888",marginLeft:"8px"}},g?g.name:"")),h("div",{className:"f ac g8"},q?h("span",{className:"badge",style:{background:C.gr+"15",color:C.gr}},"Qualifying"):null,h("span",{style:{fontSize:"22px",fontWeight:800,color:q?C.gr:C.ch}},String(rd.total)),h("span",{style:{transform:S.hWeek===ri?"rotate(180deg)":"",transition:".2s"}},"▼"))));
+    if(S.hWeek===ri){
+      const pars=g?g.pars:[];
+      const det=h("div",{style:{marginTop:"12px",overflowX:"auto"}});
+      const tbl=h("table",{});
+      const thead=h("thead",{});
+      const hr1=h("tr",{style:{background:C.cr}});hr1.appendChild(h("th",{style:{textAlign:"left",padding:"6px 10px"}},"Hole"));
+      rd.holes.forEach((_,i)=>hr1.appendChild(h("th",{style:{minWidth:"28px"}},String(i+1))));
+      hr1.appendChild(h("th",{style:{fontWeight:700}},"Tot"));thead.appendChild(hr1);
+      const hr2=h("tr",{style:{background:C.lt}});hr2.appendChild(h("td",{style:{textAlign:"left",padding:"3px 10px",fontSize:"10px",fontWeight:600}},"Par"));
+      pars.forEach(p=>hr2.appendChild(h("td",{style:{fontSize:"10px"}},String(p))));
+      hr2.appendChild(h("td",{style:{fontWeight:700,fontSize:"10px"}},String(pars.reduce((a,b)=>a+b,0))));thead.appendChild(hr2);
+      tbl.appendChild(thead);
+      const tbody=h("tbody",{});
+      const sr=h("tr",{});sr.appendChild(h("td",{style:{textAlign:"left",padding:"6px 10px",fontWeight:600,fontSize:"11px"}},"Score"));
+      rd.holes.forEach((s,i)=>{const d=s-(pars[i]||4);sr.appendChild(h("td",{style:{fontWeight:700,color:d<=-1?C.gr:d>=2?C.red:C.ch}},String(s)))});
+      sr.appendChild(h("td",{style:{fontWeight:800,color:C.dk}},String(rd.total)));tbody.appendChild(sr);
+      if(rd.putts){
+        const pr=h("tr",{style:{background:C.blu+"08"}});pr.appendChild(h("td",{style:{textAlign:"left",padding:"3px 10px",fontSize:"9px",color:C.blu,fontWeight:600}},"Putts"));
+        rd.putts.forEach(p=>pr.appendChild(h("td",{style:{fontSize:"10px",fontWeight:600,color:C.blu}},String(p))));
+        pr.appendChild(h("td",{style:{fontWeight:700,fontSize:"10px",color:C.blu}},String(rd.putts.reduce((a,b)=>a+b,0))));tbody.appendChild(pr);
+      }
+      tbl.appendChild(tbody);det.appendChild(tbl);card.appendChild(det);
+      // Hole analysis
+      if(rd.putts){
+        const totPutts=rd.putts.reduce((a,b)=>a+b,0);
+        const threePutts=rd.putts.filter(p=>p>=3).length;
+        const onePutts=rd.putts.filter(p=>p<=1).length;
+        const hardest=rd.holes.indexOf(Math.max(...rd.holes));
+        const an=h("div",{style:{marginTop:"12px",padding:"12px",background:C.cr,borderRadius:"8px"}});
+        an.appendChild(h("div",{style:{fontSize:"13px",fontWeight:600,color:C.dk,marginBottom:"6px"}},"Round Analysis"));
+        an.appendChild(h("div",{style:{fontSize:"12px",color:"#555",lineHeight:"1.6"}},
+          "Total putts: "+totPutts+" • 1-putts: "+onePutts+" • 3-putts: "+threePutts));
+        an.appendChild(h("div",{style:{fontSize:"12px",color:"#555"}},"Toughest hole: #"+(hardest+1)+" (scored "+rd.holes[hardest]+", par "+(pars[hardest]||4)+")"));
+        if(threePutts>1)an.appendChild(h("div",{style:{fontSize:"12px",color:C.red,fontWeight:600,marginTop:"4px"}},"💡 "+threePutts+" three-putts — putting practice would help the most"));
+        card.appendChild(an);
+      }
+    }
+    w.appendChild(card);
+  });
+  return w;
+}
+
+// ===== LIVE MINI =====
+function liveMini(j){
+  const g=GROUPS.find(x=>x.id===j.group),t=gT(g,j.g)||55,r=j.live,pars=g?g.pars:[],thru=r.through;
+  const scored=r.holes.slice(0,thru),cur=scored.reduce((a,b)=>a+b,0),parT=pars.slice(0,thru).reduce((a,b)=>a+b,0);
+  const tH=typeof g?.holes==="number"?g.holes:9,rem=tH-thru,bud=t-cur;
+  const avgN=rem>0?(bud/rem).toFixed(1):0,onP=rem>0?cur<=(t*(thru/tH)):cur<=t;
+  const proj=rem>0?Math.round(cur+(cur/thru)*rem):cur;
+  const card=h("div",{style:{background:C.wh,borderRadius:"10px",padding:"14px",marginTop:"8px"}});
+  card.appendChild(h("div",{className:"f sb ac"},h("div",{},h("div",{style:{fontWeight:700,fontSize:"15px"}},j.name),h("div",{style:{fontSize:"12px",color:"#888"}},(g?g.name:"")+" • Thru "+thru)),h("div",{style:{textAlign:"right"}},h("div",{style:{fontSize:"28px",fontWeight:800,color:onP?C.gr:C.red}},String(cur)),h("div",{style:{fontSize:"11px",color:onP?C.gr:C.red,fontWeight:600}},(cur-parT>=0?"+":"")+(cur-parT)+" to par"))));
+  const hs=h("div",{className:"f g4",style:{margin:"10px 0"}});
+  r.holes.forEach((v,i)=>{const pl=i<thru,par=pars[i]||4,d=v-par;hs.appendChild(h("div",{style:{flex:1,textAlign:"center"}},h("div",{style:{fontSize:"9px",color:"#aaa"}},String(i+1)),h("div",{style:{fontSize:"13px",fontWeight:700,width:"28px",height:"28px",lineHeight:"28px",margin:"0 auto",borderRadius:Math.abs(d)>=2?"50%":"4px",border:pl?"2px solid "+(d<=-1?C.gr:d>=1?C.red:C.lt):"1px dashed #ddd",background:!pl?"transparent":d<=-1?C.gr+"15":d>=2?C.red+"15":"transparent",color:!pl?"#ccc":d<=-1?C.gr:d>=1?C.red:C.ch}},pl?String(v):"–"),h("div",{style:{fontSize:"8px",color:"#bbb"}},String(par))))});
+  card.appendChild(hs);
+  const pb=h("div",{style:{background:(onP?C.gr:C.red)+"10",borderRadius:"8px",padding:"10px"}});
+  pb.appendChild(h("div",{className:"f sb",style:{fontSize:"13px"}},h("span",{style:{fontWeight:600,color:onP?C.gr:C.red}},onP?"On pace":"Off pace"),h("span",{style:{fontWeight:700}},"Target: "+t)));
+  if(rem>0)pb.appendChild(h("div",{style:{fontSize:"12px",color:"#666",marginTop:"4px"}},bud>0?`Needs ${bud} over ${rem} holes (avg ${avgN}/hole) • Proj: ${proj}`:`${Math.abs(bud)} over target with ${rem} left`));
+  card.appendChild(pb);return card;
+}
+
+function liveT(){
+  const w=h("div",{}),lk=JUNIORS.filter(j=>j.live);
+  if(!lk.length)return h("div",{style:{textAlign:"center",padding:"40px"}},h("div",{style:{fontSize:"48px"}},"⛳"),h("h3",{style:{color:C.dk}},"No Active Rounds"),h("p",{style:{color:"#888",fontSize:"14px"}},"Live scores appear here on play days."));
+  w.appendChild(h("div",{className:"f ac g8",style:{marginBottom:"14px"}},h("div",{className:"ld"}),h("h2",{style:{color:C.dk,fontSize:"20px"}},"Live Round Tracker")));
+  lk.forEach(j=>{
+    const g=GROUPS.find(x=>x.id===j.group),t=gT(g,j.g)||55,r=j.live,pars=g?g.pars:[],thru=r.through;
+    const scored=r.holes.slice(0,thru),cur=scored.reduce((a,b)=>a+b,0),parT=pars.slice(0,thru).reduce((a,b)=>a+b,0);
+    const tH=typeof g?.holes==="number"?g.holes:9,rem=tH-thru,bud=t-cur;
+    const avgN=rem>0?(bud/rem).toFixed(1):0,onP=rem>0?cur<=(t*(thru/tH)):cur<=t;
+    const proj=rem>0?Math.round(cur+(cur/thru)*rem):cur,delta=cur-parT;
+    const card=h("div",{style:{background:C.wh,borderRadius:"14px",overflow:"hidden",boxShadow:"0 2px 10px rgba(0,0,0,.1)",marginBottom:"16px"}});
+    card.appendChild(h("div",{style:{background:`linear-gradient(135deg,${C.dk},${C.gr})`,padding:"16px",color:"#fff"}},h("div",{className:"f sb ac"},h("div",{},h("div",{style:{fontSize:"18px",fontWeight:700}},j.name),h("div",{style:{fontSize:"12px",opacity:.8}},(g?g.name:""))),h("div",{style:{textAlign:"right"}},h("div",{style:{fontSize:"36px",fontWeight:800,color:C.gold}},String(cur)),h("div",{style:{fontSize:"12px",color:delta>=0?"#ff9800":"#8bc34a"}},(delta>=0?"+":"")+delta+" thru "+thru)))));
+    const body=h("div",{style:{padding:"16px"}});
+    const hs=h("div",{className:"f g4",style:{marginBottom:"16px"}});
+    r.holes.forEach((v,i)=>{const pl=i<thru,par=pars[i]||4,d=v-par;hs.appendChild(h("div",{style:{flex:1,textAlign:"center"}},h("div",{style:{fontSize:"9px",color:"#aaa"}},"H"+(i+1)),h("div",{style:{fontSize:"14px",fontWeight:700,height:"32px",lineHeight:"32px",margin:"0 auto",borderRadius:Math.abs(d)>=2?"50%":"4px",width:"32px",border:pl?"2px solid "+(d<=-1?C.gr:d>=1?C.red:C.lt):"1px dashed #ddd",background:!pl?"transparent":d<=-1?C.gr+"20":d>=2?C.red+"25":"transparent",color:!pl?"#ccc":d<=-1?C.gr:d>=1?C.red:C.ch}},pl?String(v):"–"),h("div",{style:{fontSize:"8px",color:"#bbb",marginTop:"1px"}},"P"+par)))});
+    body.appendChild(hs);
+    const pb=h("div",{style:{background:(onP?C.gr:C.red)+"08",border:"2px solid "+(onP?C.gr:C.red),borderRadius:"10px",padding:"14px"}});
+    pb.appendChild(h("div",{className:"f sb ac",style:{marginBottom:"6px"}},h("div",{style:{fontWeight:700,fontSize:"15px",color:onP?C.gr:C.red}},onP?"ON PACE":"OFF PACE"),h("div",{style:{fontSize:"13px"},innerHTML:`Target: <strong>${t}</strong> | Proj: <strong style="color:${proj<=t?C.gr:C.red}">${proj}</strong>`})));
+    if(rem>0)pb.appendChild(h("div",{style:{fontSize:"13px",color:C.ch,lineHeight:"1.5"},innerHTML:bud>0?`<strong>${bud} strokes</strong> left over <strong>${rem} holes</strong> — avg <strong style="color:${avgN<=5?C.gr:C.red}">${avgN}</strong>/hole`:`<strong style="color:${C.red}">${Math.abs(bud)} over</strong> with ${rem} holes left`}));
+    body.appendChild(pb);card.appendChild(body);w.appendChild(card);
+  });
+  return w;
+}
+
+function scoresV(){
+  const w=h("div",{},h("h2",{style:{margin:"0 0 14px",color:C.dk,fontSize:"20px"}},"Score Tracker"));
+  JUNIORS.forEach(j=>{const adv=cA(j),g=GROUPS.find(x=>x.id===j.group),t=gT(g,j.g);
+    const card=h("div",{className:"c"});
+    card.appendChild(h("div",{className:"f sb ac",style:{marginBottom:"6px"}},h("div",{},h("span",{style:{fontWeight:700}},j.name),h("span",{style:{fontSize:"11px",color:"#888",marginLeft:"8px"}},(g?g.name:"")+(t?" • Target:"+t:""))),adv.r?h("span",{className:"badge",style:{background:C.gold,color:C.dk}},"Advance!"):null));
+    const sc=h("div",{className:"f g6 w",style:{marginBottom:"6px"}});
+    j.scores.forEach(s=>{const q=t&&s<=t;sc.appendChild(h("span",{style:{background:q?C.gr+"12":C.cr,border:q?"2px solid "+C.gr:"1px solid "+C.lt,padding:"3px 9px",borderRadius:"6px",fontSize:"13px",fontWeight:700,color:q?C.gr:C.ch}},String(s)))});
+    card.appendChild(sc);card.appendChild(h("div",{style:{fontSize:"11px",color:"#888"}},adv.d));card.appendChild(bar(adv.q,adv.n,adv.r?C.gold:C.gr));w.appendChild(card);
+  });return w;
+}
+
+function reqScorer(){
+  const w=h("div",{});
+  if(S.srS==="confirm"&&S.srSent){const gr=GROUPS.find(x=>x.name===S.srG);w.appendChild(h("div",{style:{textAlign:"center",padding:"40px"}},h("div",{style:{fontSize:"48px"}},"✅"),h("h3",{style:{color:C.dk}},"Scorer Requested!"),h("p",{style:{color:"#666",fontSize:"14px",margin:"10px 0"}},"Golf Shop will locate a scorer."),h("div",{style:{background:C.cr,borderRadius:"10px",padding:"16px",display:"inline-block",textAlign:"left"},innerHTML:`<div><strong>Date:</strong> ${S.srD}</div><div><strong>Group:</strong> ${S.srG}</div><div style="margin-top:8px"><strong>Rate:</strong> $${gr?gr.rate:30}</div>`}),h("div",{style:{marginTop:"20px"}},h("button",{className:"btn bg",onClick:()=>{S.srS="list";S.srSent=false;S.srD="";S.srG="";R()}},"Done"))));return w}
+  if(S.srS==="new"){
+    w.appendChild(h("button",{style:{background:"none",border:"none",color:C.gr,fontSize:"13px",cursor:"pointer",padding:0,marginBottom:"8px"},onClick:()=>{S.srS="list";R()}},"← Back"));
+    w.appendChild(h("h2",{style:{margin:"0 0 16px",color:C.dk,fontSize:"20px"}},"Request Paid Scorer"));
+    const card=h("div",{className:"c"});
+    card.appendChild(h("label",{style:{fontSize:"13px",fontWeight:600,display:"block",marginBottom:"6px"}},"Date"));
+    const ds=h("select",{style:{width:"100%",padding:"10px 12px",border:"1px solid "+C.lt,borderRadius:"8px",fontSize:"14px",marginBottom:"16px"},onChange:e=>{S.srD=e.target.value;R()}});
+    ds.appendChild(h("option",{value:""},"Select..."));["Jun 27 (Thu)","Jun 28 (Fri)","Jul 11 (Thu)","Jul 12 (Fri)","Jul 18 (Thu)","Jul 19 (Fri)"].forEach(d=>ds.appendChild(h("option",{value:d,selected:S.srD===d},d)));card.appendChild(ds);
+    card.appendChild(h("label",{style:{fontSize:"13px",fontWeight:600,display:"block",marginBottom:"6px"}},"Group"));
+    const gs=h("select",{style:{width:"100%",padding:"10px 12px",border:"1px solid "+C.lt,borderRadius:"8px",fontSize:"14px",marginBottom:"16px"},onChange:e=>{S.srG=e.target.value;R()}});
+    gs.appendChild(h("option",{value:""},"Select..."));GROUPS.forEach(g=>gs.appendChild(h("option",{value:g.name,selected:S.srG===g.name},g.name+" ($"+g.rate+")")));card.appendChild(gs);
+    const rdy=S.srD&&S.srG;
+    if(rdy){const gr=GROUPS.find(x=>x.name===S.srG);card.appendChild(h("div",{style:{background:C.cr,borderRadius:"10px",padding:"14px",marginBottom:"16px"}},h("div",{style:{fontSize:"14px",fontWeight:600,color:C.dk}},"Rate: $"+(gr?gr.rate:30)),h("div",{style:{fontSize:"12px",color:"#666",marginTop:"4px"}},"Leave cash at Golf Shop or pay via Venmo.")))}
+    card.appendChild(h("button",{className:"btn",style:{width:"100%",padding:"12px",background:rdy?C.gr:C.lt,color:rdy?"#fff":"#999",fontSize:"15px",fontWeight:700},onClick:()=>{if(rdy){S.srS="confirm";S.srSent=true;R()}}},"Submit Request"));
+    w.appendChild(card);return w;
+  }
+  w.appendChild(h("div",{className:"f sb ac",style:{marginBottom:"16px"}},h("h2",{style:{margin:0,color:C.dk,fontSize:"20px"}},"Scorer Requests"),h("button",{className:"btn bg",onClick:()=>{S.srS="new";R()}},"+ Request")));
+  // Venmo
+  w.appendChild(h("div",{style:{background:C.ven+"10",border:"1px solid "+C.ven+"40",borderRadius:"10px",padding:"14px",marginBottom:"12px"}},h("div",{className:"f ac g8",style:{marginBottom:"6px"}},h("div",{style:{background:C.ven,color:"#fff",borderRadius:"6px",padding:"3px 8px",fontSize:"12px",fontWeight:700}},"Venmo"),h("span",{style:{fontSize:"13px",fontWeight:600}},"Pay Your Scorer")),h("div",{style:{fontSize:"12px",color:"#666",marginBottom:"10px"}},"Tap to pay via Venmo or leave cash at the Golf Shop."),h("a",{href:"https://venmo.com",target:"_blank",rel:"noopener noreferrer",style:{display:"inline-flex",gap:"6px",background:C.ven,color:"#fff",padding:"8px 20px",borderRadius:"8px",fontSize:"14px",fontWeight:700,textDecoration:"none"}},"Open Venmo")));
+  // Requests list
+  const rl=h("div",{className:"c"},h("h3",{style:{margin:"0 0 10px",fontSize:"15px",color:C.dk}},"Your Requests"));
+  SCORER_REQS.forEach(r=>{rl.appendChild(h("div",{className:"f sb ac",style:{padding:"12px 0",borderBottom:"1px solid "+C.lt}},h("div",{},h("div",{style:{fontSize:"14px",fontWeight:600}},r.date+" — "+r.group+(r.urgent?" ⚠️":"")),h("div",{style:{fontSize:"12px",color:"#888"}},"$"+r.rate)),h("span",{className:"badge",style:{background:r.status==="filled"?C.gr+"15":r.urgent?C.red+"15":C.gold+"20",color:r.status==="filled"?C.gr:r.urgent?C.red:C.dkg}},r.status==="filled"?"Filled: "+r.scorer:r.urgent?"URGENT":"Pending")))});
+  w.appendChild(rl);
+  // Rates
+  const rt=h("div",{className:"c"},h("h3",{style:{margin:"0 0 8px",fontSize:"15px",color:C.dk}},"Paid Scorer Rates"));
+  [{g:"Skills & Valley 5",r:25},{g:"Valley 9",r:30},{g:"Junior Champ 9",r:35},{g:"Championship 9",r:35},{g:"Championship 18",r:35}].forEach((x,i)=>rt.appendChild(h("div",{className:"f sb",style:{padding:"6px 0",fontSize:"13px",borderBottom:i<4?"1px solid "+C.lt:"none"}},h("span",{},x.g),h("strong",{},"$"+x.r))));
+  w.appendChild(rt);
+  // Swaps
+  const sw=h("div",{className:"c"},h("h3",{style:{margin:"0 0 10px",fontSize:"15px",color:C.dk}},"Scorer Swap Board"));
+  SWAPS.forEach(s=>sw.appendChild(h("div",{className:"f sb ac",style:{padding:"10px 0",borderBottom:"1px solid "+C.lt}},h("div",{},h("div",{style:{fontSize:"13px",fontWeight:600}},s.from+" wants to swap"),h("div",{style:{fontSize:"12px",color:"#888"}},"Has: "+s.fromDate+" • Wants: "+s.seeking)),h("button",{className:"btn bg",style:{padding:"5px 12px",fontSize:"12px"}},"Offer Swap"))));
+  w.appendChild(sw);return w;
+}
+
+function schedV(){
+  const w=h("div",{},h("h2",{style:{margin:"0 0 14px",color:C.dk,fontSize:"20px"}},"Season Schedule"));
   const tc={play:C.gr,camp:C.blu,event:C.gold,admin:"#888",eval:C.dkg,parent:C.lg,tournament:C.red,off:"#bbb"};
   const tl={play:"Play",camp:"Camp",event:"Event",admin:"Admin",eval:"Eval",parent:"Parent",tournament:"Tourney",off:"Off"};
-  const filters=h("div",{className:"flex gap-6 wrap",style:{marginBottom:"14px"}});
-  ["all","play","camp","event","tournament","parent"].forEach(f=>{
-    filters.appendChild(h("button",{style:{background:state.schedFilter===f?C.dk:C.wh,color:state.schedFilter===f?"#fff":C.ch,border:"1px solid "+C.lt,borderRadius:"20px",padding:"5px 12px",fontSize:"11px",cursor:"pointer",textTransform:"capitalize"},onClick:()=>{state.schedFilter=f;render()}},f==="all"?"All":(tl[f]||f)));
-  });
-  wrap.appendChild(filters);
-  const filtered=state.schedFilter==="all"?SCHEDULE:SCHEDULE.filter(s=>s.type===state.schedFilter);
-  filtered.forEach(s=>{
-    wrap.appendChild(h("div",{style:{background:C.wh,borderRadius:"10px",padding:"12px 14px",boxShadow:"0 1px 3px rgba(0,0,0,.05)",display:"flex",alignItems:"center",gap:"10px",borderLeft:"4px solid "+tc[s.type],marginBottom:"8px"}},
-      h("div",{style:{minWidth:"65px",fontSize:"13px",fontWeight:700}},s.date),
-      h("div",{style:{flex:1}},h("div",{style:{fontSize:"13px"}},s.ev),s.time?h("div",{style:{fontSize:"11px",color:"#888"}},s.time):null),
-      h("span",{style:{background:tc[s.type]+"18",color:tc[s.type],padding:"2px 8px",borderRadius:"10px",fontSize:"10px",fontWeight:600}},tl[s.type])
-    ));
-  });
-  return wrap;
+  const fl=h("div",{className:"f g6 w",style:{marginBottom:"14px"}});
+  ["all","play","camp","event","tournament","parent"].forEach(f=>fl.appendChild(h("button",{style:{background:S.sf===f?C.dk:C.wh,color:S.sf===f?"#fff":C.ch,border:"1px solid "+C.lt,borderRadius:"20px",padding:"5px 12px",fontSize:"11px",cursor:"pointer"},onClick:()=>{S.sf=f;R()}},f==="all"?"All":(tl[f]||f))));
+  w.appendChild(fl);
+  (S.sf==="all"?SCHEDULE:SCHEDULE.filter(s=>s.type===S.sf)).forEach(s=>w.appendChild(h("div",{style:{background:C.wh,borderRadius:"10px",padding:"12px 14px",boxShadow:"0 1px 3px rgba(0,0,0,.05)",display:"flex",alignItems:"center",gap:"10px",borderLeft:"4px solid "+tc[s.type],marginBottom:"8px"}},h("div",{style:{minWidth:"65px",fontSize:"13px",fontWeight:700}},s.date),h("div",{style:{flex:1}},h("div",{style:{fontSize:"13px"}},s.ev),s.time?h("div",{style:{fontSize:"11px",color:"#888"}},s.time):null),h("span",{style:{background:tc[s.type]+"18",color:tc[s.type],padding:"2px 8px",borderRadius:"10px",fontSize:"10px",fontWeight:600}},tl[s.type]))));
+  return w;
 }
 
-function groupsView(){
-  const wrap=h("div",{},h("h2",{style:{margin:"0 0 14px",color:C.dk,fontSize:"20px"}},"Playing Levels"));
-  GROUPS.forEach(g=>{
-    const card=h("div",{className:"card card-accent",style:{cursor:"pointer"},onClick:()=>{state.selGroup=state.selGroup===g.id?null:g.id;render()}});
-    card.appendChild(h("div",{className:"flex between center"},
-      h("div",{},h("div",{style:{fontSize:"15px",fontWeight:700,color:C.dk}},g.name),h("div",{style:{fontSize:"12px",color:"#888"}},g.day+"s • "+g.course)),
-      h("span",{style:{transform:state.selGroup===g.id?"rotate(180deg)":"",transition:".2s",fontSize:"16px"}},"▼")
-    ));
-    if(state.selGroup===g.id){
-      card.appendChild(h("div",{style:{marginTop:"10px",paddingTop:"10px",borderTop:"1px solid "+C.lt,fontSize:"13px"}},
-        h("div",{style:{marginBottom:"4px"},innerHTML:`<strong>Tees:</strong> ${g.tees}`}),
-        h("div",{style:{marginBottom:"4px"},innerHTML:`<strong>Holes:</strong> ${g.holes}`}),
-        h("div",{style:{marginBottom:"4px"},innerHTML:`<strong>Advancement:</strong> ${g.criteria}`}),
-        h("div",{innerHTML:`<strong>Tournament:</strong> ${g.tourn}`})
-      ));
-    }
-    wrap.appendChild(card);
-  });
-  return wrap;
+function groupsV(){
+  const w=h("div",{},h("h2",{style:{margin:"0 0 14px",color:C.dk,fontSize:"20px"}},"Playing Levels"));
+  GROUPS.forEach(g=>{const card=h("div",{className:"c ca",style:{cursor:"pointer"},onClick:()=>{S.sg=S.sg===g.id?null:g.id;R()}});card.appendChild(h("div",{className:"f sb ac"},h("div",{},h("div",{style:{fontSize:"15px",fontWeight:700,color:C.dk}},g.name),h("div",{style:{fontSize:"12px",color:"#888"}},g.day+"s • "+g.course)),h("span",{style:{transform:S.sg===g.id?"rotate(180deg)":"",transition:".2s"}},"▼")));
+  if(S.sg===g.id)card.appendChild(h("div",{style:{marginTop:"10px",paddingTop:"10px",borderTop:"1px solid "+C.lt,fontSize:"13px"},innerHTML:`<div style="margin-bottom:4px"><strong>Tees:</strong> ${g.tees}</div><div style="margin-bottom:4px"><strong>Holes:</strong> ${g.holes}</div><div style="margin-bottom:4px"><strong>Advancement:</strong> ${g.criteria}</div><div><strong>Tournament:</strong> ${g.tourn}</div>`}));
+  w.appendChild(card)});return w;
 }
 
-function infoView(){
-  const wrap=h("div",{},h("h2",{style:{margin:"0 0 14px",color:C.dk,fontSize:"20px"}},"Program Information"));
-  [{t:"Program Fees",c:"Skills through Championship 9: $140 | Championship 18: $80"},
-  {t:"Eligibility",c:"Ages 7 (by 7/31) through 19, must be in high school senior year or younger, children of Golfing Members."},
-  {t:"Dress Code",c:"No denim. Golf/tennis shoes required. Boys: collared shirts tucked in, golf shorts. Girls: no halter/tank tops or exposed midriffs. Hats bill-forward. Violators sent home."},
-  {t:"Scoring Obligations",c:"3 times per season + 1 tournament. No-show fines: $75/$125/$200 (9-hole) or $100/$150/$200 (18-hole)."},
-  {t:"Privilege Card",c:"Boys: 5 rounds ≤50 on Championship 9. Girls: 5 rounds ≤57. Must be committee-approved scorer (not parent)."},
-  {t:"Future Juniors (4-6)",c:"Pre-junior introduction. Summer sessions Jun-Aug. Limited to 6 per session. Contact Golf Shop."},
-  {t:"Contact",c:"Golf Shop: (636) 227-1528 | Head Pro: Marvin Herrod (636) 207-3525 | Chairpersons: Carol Clifford & Chrissie Schultheiss"}
-  ].forEach(s=>{
-    wrap.appendChild(h("div",{className:"card"},h("div",{style:{fontSize:"14px",fontWeight:700,color:C.dk,marginBottom:"4px"}},s.t),h("div",{style:{fontSize:"13px",lineHeight:"1.5"}},s.c)));
-  });
-  return wrap;
+function infoV(){
+  const w=h("div",{},h("h2",{style:{margin:"0 0 14px",color:C.dk,fontSize:"20px"}},"Program Info"));
+  [{t:"Fees",c:"Skills–Champ 9: $140 | Champ 18: $80"},{t:"Eligibility",c:"Ages 7 (by 7/31)–19, senior year of HS max, children of Golfing Members."},{t:"Dress Code",c:"No denim. Golf/tennis shoes. Boys: collared shirts tucked in. Girls: no halter/tank tops. Hats bill-forward."},{t:"Scoring",c:"3x per season + 1 tournament. No-show fines: $75/$125/$200 (9-hole) or $100/$150/$200 (18-hole)."},{t:"Privilege Card",c:"Boys: 5 rounds ≤50 on Champ 9. Girls: 5 rounds ≤57. Committee-approved scorer only."},{t:"Future Juniors (4-6)",c:"Pre-junior intro. Summer sessions Jun-Aug. Max 6/session."},{t:"Contact",c:"Golf Shop: (636) 227-1528 | Head Pro: Marvin Herrod (636) 207-3525 | Chairs: Carol Clifford & Chrissie Schultheiss"}].forEach(s=>w.appendChild(h("div",{className:"c"},h("div",{style:{fontSize:"14px",fontWeight:700,color:C.dk,marginBottom:"4px"}},s.t),h("div",{style:{fontSize:"13px",lineHeight:"1.5"}},s.c))));
+  return w;
 }
 
-// SCORER VIEWS
-function scorerDash(){
-  const d=SCORERS[0],wrap=h("div",{});
-  wrap.appendChild(h("div",{className:"hero"},h("h2",{},"Scorer Dashboard"),h("p",{},"Next assignment: Jun 27 (Thursday) • Short Valley 9")));
-  const stats=h("div",{className:"flex gap-10 wrap",style:{marginBottom:"16px"}});
-  stats.appendChild(stat("Completed",d.done+"/"+d.req,"regular season"));
-  stats.appendChild(stat("Tournament",d.tDone?"Done":"Pending","1 required",d.tDone?C.gr:C.gold));
-  stats.appendChild(stat("No-Shows",d.ns,d.ns>0?"fine assessed":"clean record",d.ns>0?C.red:C.gr));
-  wrap.appendChild(stats);
-  wrap.appendChild(h("div",{className:"card"},h("h3",{style:{margin:"0 0 8px",color:C.dk,fontSize:"15px"}},"Reminders"),
-    h("p",{style:{fontSize:"13px",lineHeight:"1.6",marginBottom:"6px"}},"Arrive 10 min before tee time. Follow club dress code — no denim. Valley Course scorers should walk (no cart preferred)."),
-    h("p",{style:{fontSize:"13px",lineHeight:"1.6",margin:0},innerHTML:`Can't make your date? Swap with another parent or call the Golf Shop 24+ hours ahead: <strong>(636) 227-1528</strong>`})
-  ));
-  return wrap;
+// ===== SCORER =====
+function sDash(){
+  const d=SCORERS[0],w=h("div",{});
+  w.appendChild(h("div",{className:"hero"},h("h2",{style:{fontWeight:300,fontSize:"20px"}},"Scorer Dashboard"),h("p",{style:{marginTop:"6px",opacity:.8,fontSize:"13px"}},"Next: Jun 27 (Thu) • Short Valley 9")));
+  w.appendChild(h("div",{style:{marginBottom:"4px"}},h("h3",{style:{fontSize:"15px",color:C.dk,marginBottom:"8px"}},"Play Day Weather")));
+  w.appendChild(weatherW());
+  const sts=h("div",{className:"f g10 w",style:{marginBottom:"16px"}});
+  sts.appendChild(stat("Done",d.done+"/"+d.req,"regular"));sts.appendChild(stat("Tourney",d.tDone?"Done":"Pending","1 required",d.tDone?C.gr:C.gold));sts.appendChild(stat("No-Shows",d.ns,d.ns>0?"fine":"clean",d.ns>0?C.red:C.gr));
+  w.appendChild(sts);
+  w.appendChild(h("div",{className:"c"},h("h3",{style:{margin:"0 0 8px",color:C.dk,fontSize:"15px"}},"Reminders"),h("p",{style:{fontSize:"13px",lineHeight:"1.6",marginBottom:"6px"}},"Arrive 10 min early. No denim. Valley scorers walk (no cart). "),h("p",{style:{fontSize:"13px",lineHeight:"1.6",margin:0},innerHTML:`Can't make it? Call Golf Shop 24+ hrs ahead: <strong>(636) 227-1528</strong>`})));
+  return w;
 }
 
-function liveScoring(){
-  const wrap=h("div",{}),players=["Ethan M.","Noah B.","Sophia R."];
-  const totalPar=state.holes.reduce((s,x)=>s+x.par,0);
-  const tot=p=>state.holes.reduce((s,x)=>s+(x.scores[p]||0),0);
-  const totPutts=p=>state.holes.reduce((s,x)=>s+(x.putts[p]||0),0);
-
-  wrap.appendChild(h("div",{style:{background:`linear-gradient(135deg,${C.dk},${C.gr})`,borderRadius:"12px",padding:"14px",color:"#fff",marginBottom:"14px"}},
-    h("div",{style:{fontSize:"13px",opacity:.8}},"Now Scoring"),
-    h("div",{style:{fontSize:"18px",fontWeight:700}},"Short Valley 9 — Valley Course"),
-    h("div",{style:{fontSize:"12px",opacity:.7}},"Thursday • Par "+totalPar)
-  ));
-
-  const holeBtns=h("div",{className:"flex gap-4",style:{overflowX:"auto",marginBottom:"14px"}});
-  state.holes.forEach((_,i)=>{
-    holeBtns.appendChild(h("button",{className:"hole-btn "+(state.activeHole===i?"active":""),onClick:()=>{state.activeHole=i;render()}},String(i+1)));
-  });
-  wrap.appendChild(holeBtns);
-
-  const ah=state.holes[state.activeHole];
-  const card=h("div",{className:"card"});
-  card.appendChild(h("div",{className:"flex between center",style:{marginBottom:"14px"}},
-    h("div",{style:{fontSize:"20px",fontWeight:800,color:C.dk}},"Hole "+ah.num),
-    h("div",{style:{background:C.cr,padding:"4px 12px",borderRadius:"8px",fontWeight:700,color:C.gr}},"Par "+ah.par)
-  ));
-
+function liveS(){
+  const w=h("div",{}),players=["Ethan M.","Noah B.","Sophia R."];
+  const totalPar=S.holes.reduce((s,x)=>s+x.par,0);
+  const tot=p=>S.holes.reduce((s,x)=>s+(x.scores[p]||0),0);
+  const tP=p=>S.holes.reduce((s,x)=>s+(x.putts[p]||0),0);
+  w.appendChild(h("div",{style:{background:`linear-gradient(135deg,${C.dk},${C.gr})`,borderRadius:"12px",padding:"14px",color:"#fff",marginBottom:"14px"}},h("div",{style:{fontSize:"13px",opacity:.8}},"Now Scoring"),h("div",{style:{fontSize:"18px",fontWeight:700}},"Short Valley 9"),h("div",{style:{fontSize:"12px",opacity:.7}},"Thursday • Par "+totalPar)));
+  const hb=h("div",{className:"f g4",style:{overflowX:"auto",marginBottom:"14px"}});
+  S.holes.forEach((_,i)=>hb.appendChild(h("button",{className:"hb2 "+(S.aH===i?"a":""),onClick:()=>{S.aH=i;R()}},String(i+1))));
+  w.appendChild(hb);
+  const ah=S.holes[S.aH];
+  const card=h("div",{className:"c"});
+  card.appendChild(h("div",{className:"f sb ac",style:{marginBottom:"14px"}},h("div",{style:{fontSize:"20px",fontWeight:800,color:C.dk}},"Hole "+ah.num),h("div",{style:{background:C.cr,padding:"4px 12px",borderRadius:"8px",fontWeight:700,color:C.gr}},"Par "+ah.par)));
   players.forEach(p=>{
     const s=ah.scores[p]||0,d=s-ah.par,pt=ah.putts[p]||0;
     const row=h("div",{style:{padding:"10px 0",borderBottom:"1px solid "+C.lt}});
-    row.appendChild(h("div",{className:"flex between center"},
-      h("div",{},h("div",{style:{fontWeight:600,fontSize:"14px"}},p),h("div",{style:{fontSize:"11px",color:"#888"}},"Total: "+tot(p)+" • Putts: "+totPutts(p))),
-      h("div",{className:"flex center gap-10"},
-        h("button",{className:"score-circle score-minus",onClick:()=>{ah.scores[p]=Math.max(0,(ah.scores[p]||0)-1);render()}},"−"),
-        h("div",{style:{width:"40px",textAlign:"center",fontSize:"26px",fontWeight:800,color:s===0?"#ccc":d<=0&&s>0?C.gr:d>=2?C.red:C.ch}},s||"–"),
-        h("button",{className:"score-circle score-plus",onClick:()=>{ah.scores[p]=(ah.scores[p]||0)+1;render()}},"+")
-      )
-    ));
-    row.appendChild(h("div",{className:"flex between center",style:{marginTop:"6px",paddingLeft:"4px"}},
-      h("div",{style:{fontSize:"12px",color:C.blu,fontWeight:600}},"Putts"),
-      h("div",{className:"flex center gap-8"},
-        h("button",{className:"putt-circle putt-minus",onClick:()=>{ah.putts[p]=Math.max(0,(ah.putts[p]||0)-1);render()}},"−"),
-        h("div",{style:{width:"30px",textAlign:"center",fontSize:"18px",fontWeight:700,color:pt===0?"#ccc":pt<=1?C.gr:pt>=3?C.red:C.ch}},pt||"–"),
-        h("button",{className:"putt-circle putt-plus",onClick:()=>{ah.putts[p]=(ah.putts[p]||0)+1;render()}},"+")
-      )
-    ));
+    row.appendChild(h("div",{className:"f sb ac"},h("div",{},h("div",{style:{fontWeight:600,fontSize:"14px"}},p),h("div",{style:{fontSize:"11px",color:"#888"}},"Tot:"+tot(p)+" Putts:"+tP(p))),h("div",{className:"f ac g10"},h("button",{className:"sc sm",onClick:()=>{ah.scores[p]=Math.max(0,(ah.scores[p]||0)-1);R()}},"−"),h("div",{style:{width:"40px",textAlign:"center",fontSize:"26px",fontWeight:800,color:s===0?"#ccc":d<=0&&s>0?C.gr:d>=2?C.red:C.ch}},s||"–"),h("button",{className:"sc sp",onClick:()=>{ah.scores[p]=(ah.scores[p]||0)+1;R()}},"+"))));
+    row.appendChild(h("div",{className:"f sb ac",style:{marginTop:"6px",paddingLeft:"4px"}},h("div",{style:{fontSize:"12px",color:C.blu,fontWeight:600}},"Putts"),h("div",{className:"f ac g8"},h("button",{className:"pc pm",onClick:()=>{ah.putts[p]=Math.max(0,(ah.putts[p]||0)-1);R()}},"−"),h("div",{style:{width:"30px",textAlign:"center",fontSize:"18px",fontWeight:700,color:pt===0?"#ccc":pt<=1?C.gr:pt>=3?C.red:C.ch}},pt||"–"),h("button",{className:"pc pp",onClick:()=>{ah.putts[p]=(ah.putts[p]||0)+1;R()}},"+"))));
     card.appendChild(row);
   });
-
-  const noteTA=h("textarea",{placeholder:"Note sportsmanship, pace of play, course care...",style:{width:"100%",marginTop:"4px",padding:"10px",border:"1px solid "+C.lt,borderRadius:"8px",fontSize:"13px",resize:"vertical",minHeight:"50px"},value:state.notes[state.activeHole]||""});
-  noteTA.addEventListener("input",e=>{state.notes[state.activeHole]=e.target.value});
-  card.appendChild(h("div",{style:{marginTop:"12px"}},h("label",{style:{fontSize:"12px",fontWeight:600,color:"#888"}},"Etiquette / Behavior Notes"),noteTA));
-  wrap.appendChild(card);
-
-  // Scorecard table
-  const tCard=h("div",{style:{background:C.wh,borderRadius:"12px",overflow:"hidden",boxShadow:"0 2px 8px rgba(0,0,0,.06)",marginTop:"14px"}});
-  tCard.appendChild(h("div",{style:{background:C.dk,color:"#fff",padding:"8px 14px",fontSize:"13px",fontWeight:600}},"Scorecard"));
-  const tbl=h("table",{});
-  const thead=h("thead",{});
-  const hr1=h("tr",{style:{background:C.cr}});
-  hr1.appendChild(h("th",{style:{padding:"6px 10px",textAlign:"left"}},"Hole"));
-  state.holes.forEach(x=>hr1.appendChild(h("th",{style:{minWidth:"28px"}},String(x.num))));
-  hr1.appendChild(h("th",{style:{fontWeight:700}},"Tot"));
-  thead.appendChild(hr1);
-  const hr2=h("tr",{style:{background:C.lt}});
-  hr2.appendChild(h("td",{style:{padding:"3px 10px",fontSize:"10px",fontWeight:600}},"Par"));
-  state.holes.forEach(x=>hr2.appendChild(h("td",{style:{fontSize:"10px"}},String(x.par))));
-  hr2.appendChild(h("td",{style:{fontWeight:700,fontSize:"10px"}},String(totalPar)));
-  thead.appendChild(hr2);
-  tbl.appendChild(thead);
-  const tbody=h("tbody",{});
-  players.forEach(p=>{
-    const sr=h("tr",{});
-    sr.appendChild(h("td",{style:{padding:"6px 10px",fontWeight:600,fontSize:"11px",textAlign:"left"}},p.split(" ")[0]));
-    state.holes.forEach(x=>{const s=x.scores[p]||0,d=s-x.par;sr.appendChild(h("td",{style:{fontWeight:700,color:s===0?"#ccc":d<=-1?C.gr:d>=2?C.red:C.ch}},s?String(s):"–"))});
-    sr.appendChild(h("td",{style:{fontWeight:800,color:C.dk}},String(tot(p))||"–"));
-    tbody.appendChild(sr);
-    const pr=h("tr",{style:{background:C.blu+"08"}});
-    pr.appendChild(h("td",{style:{padding:"3px 10px",fontSize:"9px",color:C.blu,fontWeight:600,textAlign:"left"}},"Putts"));
-    state.holes.forEach(x=>{const pt=x.putts[p]||0;pr.appendChild(h("td",{style:{fontSize:"10px",fontWeight:600,color:pt===0?"#ccc":C.blu}},pt?String(pt):"–"))});
-    pr.appendChild(h("td",{style:{fontWeight:700,fontSize:"10px",color:C.blu}},String(totPutts(p))||"–"));
-    tbody.appendChild(pr);
-  });
-  tbl.appendChild(tbody);
-  tCard.appendChild(h("div",{style:{overflowX:"auto"}},tbl));
-  wrap.appendChild(tCard);
-  return wrap;
+  const nt=h("textarea",{placeholder:"Etiquette/behavior notes...",style:{width:"100%",marginTop:"4px",padding:"10px",border:"1px solid "+C.lt,borderRadius:"8px",fontSize:"13px",resize:"vertical",minHeight:"50px"},value:S.notes[S.aH]||""});
+  nt.addEventListener("input",e=>{S.notes[S.aH]=e.target.value});
+  card.appendChild(h("div",{style:{marginTop:"12px"}},h("label",{style:{fontSize:"12px",fontWeight:600,color:"#888"}},"Notes"),nt));
+  w.appendChild(card);
+  // Scorecard
+  const tc=h("div",{style:{background:C.wh,borderRadius:"12px",overflow:"hidden",boxShadow:"0 2px 8px rgba(0,0,0,.06)",marginTop:"14px"}});
+  tc.appendChild(h("div",{style:{background:C.dk,color:"#fff",padding:"8px 14px",fontSize:"13px",fontWeight:600}},"Scorecard"));
+  const tbl=h("table",{});const thd=h("thead",{});
+  const r1=h("tr",{style:{background:C.cr}});r1.appendChild(h("th",{style:{textAlign:"left",padding:"6px 10px"}},"Hole"));S.holes.forEach(x=>r1.appendChild(h("th",{style:{minWidth:"28px"}},String(x.num))));r1.appendChild(h("th",{style:{fontWeight:700}},"Tot"));thd.appendChild(r1);
+  const r2=h("tr",{style:{background:C.lt}});r2.appendChild(h("td",{style:{textAlign:"left",padding:"3px 10px",fontSize:"10px",fontWeight:600}},"Par"));S.holes.forEach(x=>r2.appendChild(h("td",{style:{fontSize:"10px"}},String(x.par))));r2.appendChild(h("td",{style:{fontWeight:700,fontSize:"10px"}},String(totalPar)));thd.appendChild(r2);tbl.appendChild(thd);
+  const tbd=h("tbody",{});
+  players.forEach(p=>{const sr=h("tr",{});sr.appendChild(h("td",{style:{textAlign:"left",padding:"6px 10px",fontWeight:600,fontSize:"11px"}},p.split(" ")[0]));S.holes.forEach(x=>{const s=x.scores[p]||0,d2=s-x.par;sr.appendChild(h("td",{style:{fontWeight:700,color:s===0?"#ccc":d2<=-1?C.gr:d2>=2?C.red:C.ch}},s?String(s):"–"))});sr.appendChild(h("td",{style:{fontWeight:800,color:C.dk}},String(tot(p))||"–"));tbd.appendChild(sr);
+  const pr=h("tr",{style:{background:C.blu+"08"}});pr.appendChild(h("td",{style:{textAlign:"left",padding:"3px 10px",fontSize:"9px",color:C.blu,fontWeight:600}},"Putts"));S.holes.forEach(x=>{const pt2=x.putts[p]||0;pr.appendChild(h("td",{style:{fontSize:"10px",fontWeight:600,color:pt2===0?"#ccc":C.blu}},pt2?String(pt2):"–"))});pr.appendChild(h("td",{style:{fontWeight:700,fontSize:"10px",color:C.blu}},String(tP(p))||"–"));tbd.appendChild(pr)});
+  tbl.appendChild(tbd);tc.appendChild(h("div",{style:{overflowX:"auto"}},tbl));w.appendChild(tc);return w;
 }
 
-function checkInView(){
-  const wrap=h("div",{style:{display:"flex",flexDirection:"column",gap:"16px",alignItems:"center",padding:"20px 0"}});
-  wrap.appendChild(h("h2",{style:{margin:0,color:C.dk,fontSize:"20px"}},"Scorer Check-In"));
-  if(!state.checkedIn){
-    wrap.appendChild(h("div",{style:{background:C.wh,borderRadius:"14px",padding:"24px",boxShadow:"0 2px 10px rgba(0,0,0,.1)",textAlign:"center",maxWidth:"400px",width:"100%"}},
-      h("div",{style:{fontSize:"13px",color:"#888",marginBottom:"12px"}},"Thursday, Jun 27 • Short Valley 9"),
-      h("div",{style:{fontSize:"14px",marginBottom:"20px"}},"Confirm your arrival to avoid no-show fines"),
-      h("button",{className:"btn btn-gr",style:{width:"100%",padding:"14px",fontSize:"16px",fontWeight:700},onClick:()=>{state.checkedIn=true;render()}},"Check In Now")
-    ));
-  }else{
-    wrap.appendChild(h("div",{style:{background:C.gr+"10",border:"2px solid "+C.gr,borderRadius:"14px",padding:"24px",textAlign:"center",maxWidth:"400px",width:"100%"}},
-      h("div",{style:{fontSize:"48px",marginBottom:"8px"}},"✅"),
-      h("div",{style:{fontSize:"18px",fontWeight:700,color:C.gr}},"Checked In!"),
-      h("div",{style:{fontSize:"13px",color:"#666",marginTop:"6px"}},"Confirmed at "+new Date().toLocaleTimeString())
-    ));
+function checkIn(){
+  const w=h("div",{style:{display:"flex",flexDirection:"column",gap:"16px",alignItems:"center",padding:"20px 0"}});
+  w.appendChild(h("h2",{style:{margin:0,color:C.dk,fontSize:"20px"}},"Scorer Check-In"));
+  if(!S.ci)w.appendChild(h("div",{style:{background:C.wh,borderRadius:"14px",padding:"24px",boxShadow:"0 2px 10px rgba(0,0,0,.1)",textAlign:"center",maxWidth:"400px",width:"100%"}},h("div",{style:{fontSize:"13px",color:"#888",marginBottom:"12px"}},"Thursday, Jun 27 • Short Valley 9"),h("div",{style:{fontSize:"14px",marginBottom:"20px"}},"Confirm arrival to avoid no-show fines"),h("button",{className:"btn bg",style:{width:"100%",padding:"14px",fontSize:"16px",fontWeight:700},onClick:()=>{S.ci=true;R()}},"Check In Now")));
+  else w.appendChild(h("div",{style:{background:C.gr+"10",border:"2px solid "+C.gr,borderRadius:"14px",padding:"24px",textAlign:"center",maxWidth:"400px",width:"100%"}},h("div",{style:{fontSize:"48px",marginBottom:"8px"}},"✅"),h("div",{style:{fontSize:"18px",fontWeight:700,color:C.gr}},"Checked In!"),h("div",{style:{fontSize:"13px",color:"#666",marginTop:"6px"}},"Confirmed at "+new Date().toLocaleTimeString())));
+  return w;
+}
+
+function rulesC(){
+  const w=h("div",{},h("h2",{style:{margin:"0 0 6px",color:C.dk,fontSize:"20px"}},"Quick Rules"),h("div",{style:{fontSize:"13px",color:"#888",marginBottom:"14px"}},"Common situations"));
+  [{t:"Out of Bounds",d:"Stroke + distance. Replay from original spot +1. White stakes."},{t:"Lost Ball",d:"3 min search. If not found, stroke + distance."},{t:"Water (Yellow)",d:"+1 stroke. Drop behind hazard or replay."},{t:"Lateral (Red)",d:"+1 stroke. Drop within 2 club lengths of crossing."},{t:"Unplayable",d:"+1 stroke. Replay, 2 club lengths, or drop behind on line."},{t:"Bunker",d:"Can't ground club. Rake after."},{t:"On Green",d:"Mark ball, fix marks, don't step in lines."},{t:"Max Score",d:"Skills–Valley 9: triple bogey max. Championship: full stroke."}].forEach(r=>w.appendChild(h("div",{className:"c"},h("div",{style:{fontWeight:700,fontSize:"14px",color:C.dk,marginBottom:"4px"}},r.t),h("div",{style:{fontSize:"13px",lineHeight:"1.5"}},r.d))));
+  return w;
+}
+
+// ===== ADMIN =====
+function aDash(){
+  const w=h("div",{});const aR=JUNIORS.filter(j=>cA(j).r).length,nsI=SCORERS.filter(s=>s.ns>0).length,oR=SCORER_REQS.filter(r=>r.status==="open"||r.urgent).length;
+  const sts=h("div",{className:"f g10 w",style:{marginBottom:"16px"}});
+  sts.appendChild(stat("Juniors",JUNIORS.length,"all groups"));sts.appendChild(stat("Advance",aR,"met criteria",C.gold));sts.appendChild(stat("Issues",nsI,"no-shows",nsI?C.red:C.gr));sts.appendChild(stat("Requests",oR,"need scorers",C.blu));
+  w.appendChild(sts);
+  // Urgent
+  const urgReqs=SCORER_REQS.filter(r=>r.urgent);
+  if(urgReqs.length){
+    const uc=h("div",{className:"c",style:{borderLeft:"4px solid "+C.red,background:"#fef2f2",marginBottom:"12px"}});
+    uc.appendChild(h("div",{className:"f ac g8",style:{marginBottom:"6px"}},h("span",{style:{fontSize:"14px"}},"🚨"),h("span",{style:{fontWeight:700,color:C.red,fontSize:"14px"}},"Urgent Scorer Needs")));
+    urgReqs.forEach(r=>uc.appendChild(h("div",{style:{fontSize:"13px",padding:"4px 0"}},r.parent+" — "+r.date+" — "+r.group+" • "+r.note)));
+    w.appendChild(uc);
   }
-  return wrap;
+  // Groups
+  const dc=h("div",{className:"c"},h("h3",{style:{margin:"0 0 10px",color:C.dk,fontSize:"15px"}},"Group Distribution"));
+  GROUPS.forEach(g=>{const cnt=JUNIORS.filter(j=>j.group===g.id).length;dc.appendChild(h("div",{className:"f ac g10",style:{padding:"6px 0",borderBottom:"1px solid "+C.lt}},h("div",{style:{flex:1,fontSize:"13px"}},g.name),h("div",{style:{width:"100px"}},bar(cnt,JUNIORS.length)),h("div",{style:{minWidth:"24px",textAlign:"right",fontWeight:700,color:C.gr,fontSize:"14px"}},String(cnt))))});
+  w.appendChild(dc);
+  // Advancements
+  const adc=h("div",{className:"c"},h("h3",{style:{margin:"0 0 10px",color:C.dk,fontSize:"15px"}},"Advancement Alerts"));
+  JUNIORS.filter(j=>cA(j).r).forEach(j=>{const g=GROUPS.find(x=>x.id===j.group),nx=GROUPS[GROUPS.indexOf(g)+1];adc.appendChild(h("div",{className:"f sb ac",style:{padding:"8px 0",borderBottom:"1px solid "+C.lt}},h("div",{},h("div",{style:{fontWeight:600,fontSize:"14px"}},j.name),h("div",{style:{fontSize:"11px",color:"#888"}},(g?g.name:"")+" → "+(nx?nx.name:"Top"))),h("button",{className:"btn bgo",style:{padding:"5px 14px",fontSize:"12px"}},"Promote")))});
+  w.appendChild(adc);return w;
 }
 
-function rulesCard(){
-  const wrap=h("div",{},h("h2",{style:{margin:"0 0 6px",color:C.dk,fontSize:"20px"}},"Quick Rules Reference"),h("div",{style:{fontSize:"13px",color:"#888",marginBottom:"14px"}},"Common situations while scoring"));
-  [{t:"Ball Out of Bounds",d:"Stroke and distance penalty. Re-play from original spot with 1 penalty stroke. White stakes mark OB."},
-  {t:"Lost Ball",d:"3 minutes to search. If not found, stroke and distance — replay from last spot + 1 penalty."},
-  {t:"Water Hazard (Yellow)",d:"1 penalty stroke. Drop behind the hazard keeping entry point between you and hole, or replay."},
-  {t:"Lateral Hazard (Red)",d:"1 penalty stroke. Drop within 2 club lengths of where it crossed the margin, no closer to hole."},
-  {t:"Unplayable Lie",d:"1 penalty stroke. Three options: replay, drop within 2 club lengths, or drop behind on line from hole."},
-  {t:"Bunker Play",d:"Cannot ground club in sand before stroke. Rake the bunker after your shot."},
-  {t:"Ball on Green",d:"Mark your ball, repair ball marks, don't step in another player's putting line."},
-  {t:"Max Score Rule",d:"Skills through Valley 9: max triple bogey per hole. Championship groups: full stroke play."}
-  ].forEach(r=>{
-    wrap.appendChild(h("div",{className:"card",style:{marginBottom:"10px"}},h("div",{style:{fontWeight:700,fontSize:"14px",color:C.dk,marginBottom:"4px"}},r.t),h("div",{style:{fontSize:"13px",lineHeight:"1.5"}},r.d)));
-  });
-  return wrap;
+function aJuniors(){
+  const w=h("div",{},h("h2",{style:{margin:"0 0 14px",color:C.dk,fontSize:"20px"}},"Juniors"));
+  JUNIORS.forEach(j=>{const adv=cA(j),g=GROUPS.find(x=>x.id===j.group),t=gT(g,j.g);const card=h("div",{className:"c"});card.appendChild(h("div",{className:"f sb ac"},h("div",{},h("span",{style:{fontWeight:700}},j.name),h("span",{style:{fontSize:"11px",color:"#888",marginLeft:"8px"}},"Age "+j.age+" • "+(g?g.name:""))),adv.r?h("span",{className:"badge",style:{background:C.gold,color:C.dk}},"Advance"):null));const sc=h("div",{className:"f g4 w",style:{marginTop:"6px"}});j.scores.forEach(s=>{const q=t&&s<=t;sc.appendChild(h("span",{style:{background:q?C.gr+"12":C.cr,border:q?"1px solid "+C.gr:"1px solid "+C.lt,padding:"2px 8px",borderRadius:"4px",fontSize:"12px",fontWeight:600}},String(s)))});card.appendChild(sc);card.appendChild(h("div",{style:{fontSize:"11px",color:"#888",marginTop:"4px"}},adv.d));w.appendChild(card)});return w;
 }
 
-// ADMIN VIEWS
-function adminDash(){
-  const wrap=h("div",{});
-  const advR=JUNIORS.filter(j=>checkAdv(j).ready).length,nsI=SCORERS.filter(s=>s.ns>0).length,openR=SCORER_REQS.filter(r=>r.status==="open").length;
-  const stats=h("div",{className:"flex gap-10 wrap",style:{marginBottom:"16px"}});
-  stats.appendChild(stat("Active Juniors",JUNIORS.length,"across all groups"));
-  stats.appendChild(stat("Ready to Advance",advR,"met criteria",C.gold));
-  stats.appendChild(stat("Scorer Issues",nsI,"with no-shows",nsI>0?C.red:C.gr));
-  stats.appendChild(stat("Open Requests",openR,"need scorers",C.blu));
-  wrap.appendChild(stats);
-
-  const dist=h("div",{className:"card"},h("h3",{style:{margin:"0 0 10px",color:C.dk,fontSize:"15px"}},"Group Distribution"));
-  GROUPS.forEach(g=>{const cnt=JUNIORS.filter(j=>j.group===g.id).length;
-    dist.appendChild(h("div",{className:"flex center gap-10",style:{padding:"6px 0",borderBottom:"1px solid "+C.lt}},
-      h("div",{style:{flex:1,fontSize:"13px"}},g.name),h("div",{style:{width:"100px"}},bar(cnt,JUNIORS.length)),h("div",{style:{minWidth:"24px",textAlign:"right",fontWeight:700,color:C.gr,fontSize:"14px"}},String(cnt))
-    ));
-  });
-  wrap.appendChild(dist);
-
-  const adv=h("div",{className:"card"},h("h3",{style:{margin:"0 0 10px",color:C.dk,fontSize:"15px"}},"Advancement Alerts"));
-  JUNIORS.filter(j=>checkAdv(j).ready).forEach(j=>{
-    const g=GROUPS.find(x=>x.id===j.group),next=GROUPS[GROUPS.indexOf(g)+1];
-    adv.appendChild(h("div",{className:"flex between center",style:{padding:"8px 0",borderBottom:"1px solid "+C.lt}},
-      h("div",{},h("div",{style:{fontWeight:600,fontSize:"14px"}},j.name),h("div",{style:{fontSize:"11px",color:"#888"}},(g?g.name:"")+" → "+(next?next.name:"Top"))),
-      h("button",{className:"btn btn-gold btn-sm"},"Promote")
-    ));
-  });
-  wrap.appendChild(adv);
-  return wrap;
+function aScorers(){
+  const w=h("div",{},h("h2",{style:{margin:"0 0 14px",color:C.dk,fontSize:"20px"}},"Scorers"));
+  SCORERS.forEach(s=>{const card=h("div",{className:"c",style:{borderLeft:"4px solid "+(s.ns>0?C.red:C.gr)}});card.appendChild(h("div",{className:"f sb"},h("div",{},h("div",{style:{fontWeight:700,fontSize:"14px"}},s.par),h("div",{style:{fontSize:"12px",color:"#888"}},"Junior: "+s.jr)),s.ns>0?h("span",{className:"badge",style:{background:C.red+"15",color:C.red}},s.ns+" No-Show — $"+FINES.s[Math.min(s.ns-1,2)]):null));card.appendChild(h("div",{className:"f sb",style:{marginTop:"8px",fontSize:"12px"}},h("span",{},"Season: "+s.done+"/"+s.req),h("span",{},"Tourney: "+(s.tDone?"✅":"Pending"))));card.appendChild(bar(s.done+(s.tDone?1:0),s.req+1,s.ns>0?C.red:C.gr));w.appendChild(card)});return w;
 }
 
-function adminJuniors(){
-  const wrap=h("div",{},h("h2",{style:{margin:"0 0 14px",color:C.dk,fontSize:"20px"}},"Junior Golfers"));
-  JUNIORS.forEach(j=>{
-    const adv=checkAdv(j),g=GROUPS.find(x=>x.id===j.group),t=getThreshold(g,j.g);
-    const card=h("div",{className:"card"});
-    card.appendChild(h("div",{className:"flex between center"},
-      h("div",{},h("span",{style:{fontWeight:700}},j.name),h("span",{style:{fontSize:"11px",color:"#888",marginLeft:"8px"}},"Age "+j.age+" • "+(j.g==="M"?"Boy":"Girl")+" • "+(g?g.name:""))),
-      adv.ready?h("span",{className:"badge",style:{background:C.gold,color:C.dk}},"Advance"):null
-    ));
-    const sc=h("div",{className:"flex gap-4 wrap",style:{marginTop:"6px"}});
-    j.scores.forEach(s=>{const q=t&&s<=t;sc.appendChild(h("span",{style:{background:q?C.gr+"12":C.cr,border:q?"1px solid "+C.gr:"1px solid "+C.lt,padding:"2px 8px",borderRadius:"4px",fontSize:"12px",fontWeight:600}},String(s)))});
-    card.appendChild(sc);
-    card.appendChild(h("div",{style:{fontSize:"11px",color:"#888",marginTop:"4px"}},adv.detail));
-    wrap.appendChild(card);
-  });
-  return wrap;
+function aReqs(){
+  const w=h("div",{},h("h2",{style:{margin:"0 0 14px",color:C.dk,fontSize:"20px"}},"Scorer Requests"));
+  SCORER_REQS.forEach(r=>{w.appendChild(h("div",{className:"c",style:{borderLeft:"4px solid "+(r.urgent?C.red:r.status==="filled"?C.gr:C.gold)}},h("div",{className:"f sb ac"},h("div",{},h("div",{style:{fontWeight:700,fontSize:"14px"}},(r.urgent?"🚨 ":"")+r.parent+" — "+r.date),h("div",{style:{fontSize:"12px",color:"#888"}},r.group+" • $"+r.rate+(r.note?" • "+r.note:""))),r.status==="open"||r.urgent?h("button",{className:"btn bg",style:{padding:"6px 14px",fontSize:"12px"}},"Assign"):h("span",{className:"badge",style:{background:C.gr+"15",color:C.gr}},"Filled: "+r.scorer))))});return w;
 }
 
-function adminScorers(){
-  const wrap=h("div",{},h("h2",{style:{margin:"0 0 14px",color:C.dk,fontSize:"20px"}},"Scorer Management"));
-  SCORERS.forEach(s=>{
-    const card=h("div",{className:"card",style:{borderLeft:"4px solid "+(s.ns>0?C.red:C.gr)}});
-    card.appendChild(h("div",{className:"flex between"},
-      h("div",{},h("div",{style:{fontWeight:700,fontSize:"14px"}},s.par),h("div",{style:{fontSize:"12px",color:"#888"}},"Junior: "+s.jr)),
-      s.ns>0?h("span",{className:"badge",style:{background:C.red+"15",color:C.red}},s.ns+" No-Show — $"+FINES.s[Math.min(s.ns-1,2)]):null
-    ));
-    card.appendChild(h("div",{className:"flex between",style:{marginTop:"8px",fontSize:"12px"}},h("span",{},"Season: "+s.done+"/"+s.req),h("span",{},"Tournament: "+(s.tDone?"✅":"Pending"))));
-    card.appendChild(bar(s.done+(s.tDone?1:0),s.req+1,s.ns>0?C.red:C.gr));
-    wrap.appendChild(card);
-  });
-  return wrap;
-}
-
-function adminRequests(){
-  const wrap=h("div",{},h("h2",{style:{margin:"0 0 14px",color:C.dk,fontSize:"20px"}},"Scorer Requests"));
-  SCORER_REQS.forEach(r=>{
-    wrap.appendChild(h("div",{className:"card",style:{borderLeft:"4px solid "+(r.status==="filled"?C.gr:C.gold)}},
-      h("div",{className:"flex between center"},
-        h("div",{},h("div",{style:{fontWeight:700,fontSize:"14px"}},r.parent+" — "+r.date),h("div",{style:{fontSize:"12px",color:"#888"}},r.group+" • $"+r.rate)),
-        r.status==="open"?h("button",{className:"btn btn-gr btn-sm"},"Assign Scorer"):h("span",{className:"badge",style:{background:C.gr+"15",color:C.gr}},"Filled: "+r.scorer)
-      )
-    ));
-  });
-  return wrap;
-}
-
-function adminFinances(){
-  const wrap=h("div",{},h("h2",{style:{margin:"0 0 14px",color:C.dk,fontSize:"20px"}},"Financial Ledger"));
-  const fees=[{i:"Skills–Champ 9 Registration (×6)",a:840,t:"income"},{i:"Champ 18 Registration (×2)",a:160,t:"income"},{i:"Late Registration Penalty (×1)",a:70,t:"income"},{i:"No-Show Fine — Sarah T.",a:75,t:"fine"},{i:"Paid Scorer — Pat G. (Jul 12)",a:-35,t:"expense"}];
-  const total=fees.reduce((s,f)=>s+f.a,0);
-  const stats=h("div",{className:"flex gap-10 wrap",style:{marginBottom:"16px"}});
-  stats.appendChild(stat("Total Revenue","$"+total.toLocaleString(),"",C.gr));
-  stats.appendChild(stat("Outstanding Fines","$75","1 unpaid",C.red));
-  wrap.appendChild(stats);
-  const card=h("div",{className:"card"});
-  fees.forEach((f,i)=>{
-    card.appendChild(h("div",{className:"flex between",style:{padding:"10px 0",borderBottom:i<fees.length-1?"1px solid "+C.lt:"none"}},
-      h("div",{},h("div",{style:{fontSize:"14px"}},f.i),h("div",{style:{fontSize:"11px",color:"#888"}},f.t)),
-      h("div",{style:{fontWeight:700,fontSize:"15px",color:f.a<0?C.red:C.gr}},f.a<0?"–$"+Math.abs(f.a):"$"+f.a)
-    ));
-  });
-  wrap.appendChild(card);
-  return wrap;
-}
-
-function adminSettings(){
-  const wrap=h("div",{},h("h2",{style:{margin:"0 0 14px",color:C.dk,fontSize:"20px"}},"Settings"));
-  if(!state.toggles)state.toggles={push:true,adv:true,fine:false,remind:true,weather:true};
-  [{k:"push",l:"Push Notifications",d:"Advancement and schedule alerts"},{k:"adv",l:"Auto-advancement Alerts",d:"Notify when criteria is met"},{k:"fine",l:"Auto No-Show Fine Emails",d:"Send fine notices automatically"},{k:"remind",l:"Tee Time Reminders",d:"24hr reminder before play days"},{k:"weather",l:"Weather Alerts",d:"Notify on severe weather"}].forEach(s=>{
-    const on=state.toggles[s.k];
-    wrap.appendChild(h("div",{className:"card",style:{display:"flex",justifyContent:"space-between",alignItems:"center",cursor:"pointer"},onClick:()=>{state.toggles[s.k]=!state.toggles[s.k];render()}},
-      h("div",{},h("div",{style:{fontWeight:600,fontSize:"14px"}},s.l),h("div",{style:{fontSize:"12px",color:"#888"}},s.d)),
-      h("div",{className:"toggle",style:{background:on?C.gr:C.lt}},h("div",{className:"toggle-knob",style:{left:on?"22px":"2px"}}))
-    ));
-  });
-
-  const msg=h("div",{className:"card"},h("h3",{style:{margin:"0 0 10px",fontSize:"15px",color:C.dk}},"Bulk Message"));
+function aAnn(){
+  const w=h("div",{},h("h2",{style:{margin:"0 0 14px",color:C.dk,fontSize:"20px"}},"Announcements"));
+  // New announcement form
+  const form=h("div",{className:"c",style:{marginBottom:"16px"}});
+  form.appendChild(h("h3",{style:{margin:"0 0 10px",fontSize:"15px",color:C.dk}},"Post New Announcement"));
   const sel=h("select",{style:{width:"100%",padding:"8px 12px",border:"1px solid "+C.lt,borderRadius:"8px",fontSize:"13px",marginBottom:"10px"}});
-  sel.appendChild(h("option",{},"All Parents"));
-  GROUPS.forEach(g=>sel.appendChild(h("option",{},g.name+" Parents")));
-  sel.appendChild(h("option",{},"All Scorers"));
-  msg.appendChild(sel);
-  msg.appendChild(h("textarea",{placeholder:"Type your message...",style:{width:"100%",padding:"10px",border:"1px solid "+C.lt,borderRadius:"8px",fontSize:"13px",minHeight:"60px",resize:"vertical"}}));
-  msg.appendChild(h("button",{className:"btn btn-gr",style:{marginTop:"8px"}},"Send Message"));
-  wrap.appendChild(msg);
-  return wrap;
+  ["info — General Info","urgent — Urgent Alert","scorer — Scorer Need","event — Event","achievement — Achievement"].forEach(o=>{const[v,l]=o.split(" — ");sel.appendChild(h("option",{value:v},l))});
+  form.appendChild(sel);
+  form.appendChild(h("input",{placeholder:"Title...",style:{width:"100%",padding:"8px 12px",border:"1px solid "+C.lt,borderRadius:"8px",fontSize:"13px",marginBottom:"10px"}}));
+  form.appendChild(h("textarea",{placeholder:"Message...",style:{width:"100%",padding:"10px 12px",border:"1px solid "+C.lt,borderRadius:"8px",fontSize:"13px",minHeight:"60px",resize:"vertical",marginBottom:"10px"}}));
+  const btns=h("div",{className:"f g8"});
+  btns.appendChild(h("button",{className:"btn bg"},"Post to All"));
+  btns.appendChild(h("select",{style:{padding:"8px 12px",border:"1px solid "+C.lt,borderRadius:"8px",fontSize:"12px"}},...["All Parents","All Scorers",...GROUPS.map(g=>g.name+" Parents")].map(o=>h("option",{},o))));
+  form.appendChild(btns);
+  w.appendChild(form);
+  // Existing
+  w.appendChild(annWidget());
+  return w;
 }
 
-// Initial render
-render();
+function aFin(){
+  const w=h("div",{},h("h2",{style:{margin:"0 0 14px",color:C.dk,fontSize:"20px"}},"Finances"));
+  const fees=[{i:"Skills–Champ 9 (×6)",a:840,t:"income"},{i:"Champ 18 (×2)",a:160,t:"income"},{i:"Late Reg Penalty (×1)",a:70,t:"income"},{i:"No-Show — Sarah T.",a:75,t:"fine"},{i:"Paid Scorer — Pat G.",a:-35,t:"expense"}];
+  const total=fees.reduce((s,f)=>s+f.a,0);
+  const sts=h("div",{className:"f g10 w",style:{marginBottom:"16px"}});
+  sts.appendChild(stat("Revenue","$"+total.toLocaleString(),"",C.gr));sts.appendChild(stat("Fines","$75","1 unpaid",C.red));w.appendChild(sts);
+  const card=h("div",{className:"c"});
+  fees.forEach((f,i)=>card.appendChild(h("div",{className:"f sb",style:{padding:"10px 0",borderBottom:i<fees.length-1?"1px solid "+C.lt:"none"}},h("div",{},h("div",{style:{fontSize:"14px"}},f.i),h("div",{style:{fontSize:"11px",color:"#888"}},f.t)),h("div",{style:{fontWeight:700,fontSize:"15px",color:f.a<0?C.red:C.gr}},f.a<0?"–$"+Math.abs(f.a):"$"+f.a))));
+  w.appendChild(card);return w;
+}
+
+function aSet(){
+  const w=h("div",{},h("h2",{style:{margin:"0 0 14px",color:C.dk,fontSize:"20px"}},"Settings"));
+  if(!S.tg)S.tg={push:true,adv:true,fine:false,remind:true,weather:true,urgentScorer:true};
+  [{k:"push",l:"Push Notifications",d:"Advancement & schedule"},{k:"adv",l:"Auto-Advancement Alerts",d:"When criteria met"},{k:"fine",l:"Auto Fine Emails",d:"No-show fines"},{k:"remind",l:"Tee Time Reminders",d:"24hr before play"},{k:"weather",l:"Weather Alerts",d:"Severe weather"},{k:"urgentScorer",l:"Urgent Scorer Alerts",d:"Last-minute needs to all parents"}].forEach(s=>{const on=S.tg[s.k];w.appendChild(h("div",{className:"c",style:{display:"flex",justifyContent:"space-between",alignItems:"center",cursor:"pointer"},onClick:()=>{S.tg[s.k]=!S.tg[s.k];R()}},h("div",{},h("div",{style:{fontWeight:600,fontSize:"14px"}},s.l),h("div",{style:{fontSize:"12px",color:"#888"}},s.d)),h("div",{className:"tg",style:{background:on?C.gr:C.lt}},h("div",{className:"tk",style:{left:on?"22px":"2px"}}))))});
+  // Bulk msg
+  const msg=h("div",{className:"c"},h("h3",{style:{margin:"0 0 10px",fontSize:"15px",color:C.dk}},"Bulk Message"));
+  const mSel=h("select",{style:{width:"100%",padding:"8px 12px",border:"1px solid "+C.lt,borderRadius:"8px",fontSize:"13px",marginBottom:"10px"}});
+  mSel.appendChild(h("option",{},"All Parents"));GROUPS.forEach(g=>mSel.appendChild(h("option",{},g.name)));mSel.appendChild(h("option",{},"All Scorers"));
+  msg.appendChild(mSel);msg.appendChild(h("textarea",{placeholder:"Message...",style:{width:"100%",padding:"10px",border:"1px solid "+C.lt,borderRadius:"8px",fontSize:"13px",minHeight:"60px",resize:"vertical"}}));
+  msg.appendChild(h("button",{className:"btn bg",style:{marginTop:"8px"}},"Send"));
+  w.appendChild(msg);return w;
+}
+
+R();
 </script>
 </body>
 </html>
